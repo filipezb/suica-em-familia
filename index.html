@@ -165,6 +165,21 @@
   .reminders li .b{color:var(--rail); font-weight:700; font-family:var(--mono); font-size:12px}
   .reminders li b{color:#fff}
   .foot{font-size:11px; color:var(--faint); text-align:center; margin:22px 14px 0; line-height:1.6}
+
+  /* Botão "Ver no SBB" — aparece colado embaixo de cada .leg */
+  .leg-sbb{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.04em;
+    color:#1A73E8; background:#E3EEF6;
+    border:1px solid #C8DAE8; border-top:none;
+    border-radius:0 0 10px 10px;
+    padding:8px 12px;
+    margin:-1px 0 8px 0;
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .leg-sbb:active{opacity:.75; background:#D4E4F0}
+  .leg-sbb .sbb-arrow{font-size:13px; line-height:1}
 </style>
 </head>
 <body>
@@ -260,13 +275,13 @@
         <div class="tip"><b>Enxuguei o dia:</b> o app tinha 11 paradas — demais no inverno com criança e avós. Fiquei com o essencial e a pé.</div>
         <div class="leg">
           <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>trem urbano (S-Bahn), sentido centro</small></span>
+          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>sentido <b>sul / Zurique</b> · qualquer S-Bahn rumo à HB serve · a cada <b>~5–7 min</b> · 🪜 vagões da frente saem perto da escada</small></span>
           <span class="dur">~12 min</span>
         </div>
         <div class="walk"><span class="pin">&#128649;</span><span><b>Troca de trem em Zürich HB</b> (~10 min). Desça e pegue outro trem (S-Bahn) da margem oeste do lago. Veja a plataforma no painel ou no app.</span></div>
         <div class="leg">
           <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Enge<small>outro trem urbano, poucos minutos</small></span>
+          <span class="od">🚆 Trem · Zürich HB &rarr; Enge<small>linhas <b>S2 / S8 / S24</b>, sentido <b>margem oeste do lago</b> (Thalwil/Pfäffikon) · a cada <b>~5 min</b> em pico · plataformas baixas (21–24, geralmente)</small></span>
           <span class="dur">~4 min</span>
         </div>
         <div class="walk"><span class="pin">&#128694;</span><span><b>~2 min a pé</b> — o FIFA Museum fica colado na estação de Enge.</span></div>
@@ -278,7 +293,7 @@
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=B%C3%BCrkliplatz,+Z%C3%BCrich&destination=Z%C3%BCrich+Hauptbahnhof&waypoints=Fraum%C3%BCnster,+Z%C3%BCrich%7CLindenhof,+Z%C3%BCrich%7CGrossm%C3%BCnster,+Z%C3%BCrich%7CLimmatquai,+Z%C3%BCrich&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
         <div class="leg">
           <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>volta ao hotel · trem urbano, sem troca</small></span>
+          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>sentido <b>nordeste</b> (Effretikon/Stettbach/Wetzikon) · a cada <b>~5–7 min</b> · trem urbano, sem troca</small></span>
           <span class="dur">~12 min</span>
         </div>
         <div class="walk"><span class="pin">&#128694;</span><span>Poucos passos da parada até o hotel.</span></div>
@@ -645,6 +660,35 @@
   // ---------- Checklist toggle ----------
   document.querySelectorAll('ul.check li').forEach(function(li){
     li.addEventListener('click', function(){ li.classList.toggle('done'); });
+  });
+
+  // ---------- Gera botão "Ver no SBB" abaixo de cada .leg ----------
+  // Lê origem→destino do próprio card (linha "🚆 Trem · X → Y") e monta o link.
+  document.querySelectorAll('.leg').forEach(function(leg){
+    var od = leg.querySelector('.od');
+    if (!od) return;
+    // Pega só o primeiro nó de texto (antes do <small>)
+    var firstText = '';
+    for (var i = 0; i < od.childNodes.length; i++){
+      var n = od.childNodes[i];
+      if (n.nodeType === 3) firstText += n.textContent;        // texto solto
+      else if (n.nodeType === 1 && n.tagName !== 'SMALL') firstText += n.textContent;
+      else if (n.tagName === 'SMALL') break;
+    }
+    // Match "... · ORIGEM → DESTINO"
+    var m = firstText.match(/[·•]\s*([^→→]+?)\s*[→→]\s*(.+?)\s*$/);
+    if (!m) return;
+    var origin = m[1].trim().replace(/\s+/g,' ');
+    var dest   = m[2].trim().replace(/\s+/g,' ');
+    if (!origin || !dest) return;
+    var url = 'https://www.sbb.ch/en?von=' + encodeURIComponent(origin) + '&nach=' + encodeURIComponent(dest);
+    var btn = document.createElement('a');
+    btn.className = 'leg-sbb';
+    btn.href = url;
+    btn.target = '_blank';
+    btn.rel = 'noopener noreferrer';
+    btn.innerHTML = '🔍 Ver horário ao vivo (SBB) <span class="sbb-arrow">↗</span>';
+    leg.parentNode.insertBefore(btn, leg.nextSibling);
   });
 
   // ---------- PWA: service worker + banner de atualização ----------
