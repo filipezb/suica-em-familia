@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Suíça em Família · 25 dez – 05 jan</title>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0E2233">
+<meta name="application-name" content="Suíça em Família">
+<meta name="description" content="Guia da viagem em família à Suíça · 25 dez – 05 jan">
+<!-- iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Suíça">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --snow:#F4F7FB; --paper:#FFFFFF;
+    --night:#142A3D; --night2:#1E3C56;
+    --rail:#D8232A; --gold:#A9772A;
+    --slate:#5C6E7E; --faint:#8597A6;
+    --line:#DEE6EE; --frost:#E9F1F8;
+    --display:'Archivo',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body); color:var(--night); background:var(--snow);
+    line-height:1.5; padding:0 0 64px; max-width:640px; margin:0 auto;
+    -webkit-font-smoothing:antialiased;
+  }
+  .hero{
+    background:linear-gradient(160deg,#0E2233 0%,#1E3C56 100%);
+    color:#fff; padding:34px 22px 26px; position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:14px;
+    background:repeating-linear-gradient(90deg,var(--rail) 0 22px,#fff 22px 30px); opacity:.9;
+  }
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:#9FC3DD; margin-bottom:12px}
+  .hero h1{font-family:var(--display); font-weight:800; font-size:38px; line-height:.98; letter-spacing:-.01em; margin-bottom:14px}
+  .hero h1 span{color:#76B8E8}
+  .arc{font-family:var(--mono); font-size:12.5px; color:#D6E6F2; font-weight:500; display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center}
+  .arc b{color:#fff; font-weight:700}
+  .arc i{color:var(--rail); font-style:normal; font-weight:700}
+
+  .wrap{padding:22px 18px 0}
+  .section-label{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); margin:30px 4px 12px; display:flex; align-items:center; gap:10px}
+  .section-label::after{content:""; flex:1; height:1px; background:var(--line)}
+
+  .key{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:15px 16px; margin-bottom:12px; position:relative}
+  .key .tag{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block; margin-bottom:9px}
+  .tag.booked{background:#F3E9D6; color:var(--gold)}
+  .tag.pass{background:var(--frost); color:var(--night2)}
+  .tag.warn{background:#FBE3E3; color:var(--rail)}
+  .tag.howto{background:#E5EFE8; color:#2F6B45}
+  .tag.flight{background:#E3EEF6; color:#0A66B5}
+  .key h3{font-family:var(--display); font-weight:700; font-size:16px; margin-bottom:5px}
+  .key p{font-size:13.5px; color:var(--slate)}
+  .key p strong{color:var(--night)}
+  .key .mono{font-family:var(--mono); font-size:12px; color:var(--night); font-weight:500}
+  .urgent{border:1px solid var(--rail); background:#FFF6F6}
+
+  .day{background:var(--paper); border:1px solid var(--line); border-radius:16px; margin-bottom:14px; overflow:hidden}
+  .day-head{display:flex; align-items:baseline; gap:12px; padding:16px 16px 12px; border-bottom:1px solid var(--line); flex-wrap:wrap}
+  .date-num{font-family:var(--display); font-weight:800; font-size:26px; letter-spacing:-.02em; line-height:1}
+  .date-num small{font-size:13px; font-weight:600; color:var(--faint); margin-left:3px}
+  .dow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint)}
+  .day-title{flex-basis:100%; font-family:var(--display); font-weight:700; font-size:17px; margin-top:7px; color:var(--night)}
+  .flag{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:6px; align-self:center}
+  .flag.holiday{background:#FBE3E3; color:var(--rail)}
+  .flag.party{background:#EFE6F5; color:#6E4A8E}
+  .flag.air{background:#E3EEF6; color:#0A66B5}
+
+  .day-body{padding:6px 16px 16px}
+  .row{display:flex; gap:13px; padding:9px 0; border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:none}
+  .time{font-family:var(--mono); font-size:12px; font-weight:700; color:var(--night2); min-width:50px; padding-top:1px; flex-shrink:0}
+  .what{font-size:13.5px; color:var(--night)}
+  .what b{font-weight:600}
+  .what .note{display:block; font-size:12px; color:var(--slate); margin-top:2px}
+
+  .leg{display:flex; align-items:center; gap:11px; background:#0E2233; color:#fff; border-radius:10px; padding:10px 12px; margin:8px 0 0}
+  .lbadge{font-family:var(--mono); font-weight:700; font-size:12px; color:#fff; background:var(--rail); border-radius:7px; padding:5px 8px; min-width:42px; text-align:center; flex-shrink:0; line-height:1.1}
+  .lbadge.s{background:#0A66B5}
+  .lbadge.t{background:#2F6B45}
+  .lbadge.r{background:var(--rail)}
+  .lbadge.w{background:#6E4A8E}
+  .lbadge.a{background:#0A66B5}
+  .leg .od{font-family:var(--mono); font-size:12.5px; font-weight:700; flex:1; line-height:1.35}
+  .leg .od small{display:block; font-weight:500; color:#9FC3DD; font-size:11px; margin-top:3px}
+  .leg .dur{font-family:var(--mono); font-size:11px; color:#CFE2F0; text-align:right; flex-shrink:0; line-height:1.3}
+  .leg.book{outline:2px solid var(--rail); outline-offset:0}
+
+  .walk{display:flex; align-items:center; gap:9px; font-size:12px; color:var(--night2); padding:7px 12px 7px 14px; border-left:2px dotted var(--faint); margin-left:14px}
+  .walk .pin{font-size:13px; flex-shrink:0}
+  .walk b{font-weight:600}
+
+  .maproute{display:flex; align-items:center; justify-content:center; gap:8px; background:#1A73E8; color:#fff; text-decoration:none; font-family:var(--body); font-size:12.5px; font-weight:600; padding:11px 12px; border-radius:10px; margin:9px 0 0}
+  .maproute:active{opacity:.85}
+
+  .maps-group h4{font-family:var(--display); font-weight:700; font-size:14px; margin:16px 4px 8px; color:var(--night2)}
+  .maplink{display:flex; align-items:center; gap:10px; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px 13px; font-size:13px; color:var(--night); text-decoration:none; margin-bottom:7px}
+  .maplink .ic{flex-shrink:0}
+  .maplink .arrow{margin-left:auto; color:#1A73E8; font-weight:700; flex-shrink:0}
+  .maplink{display:inline-flex; align-items:center; gap:5px; color:#1A73E8; text-decoration:none; font-size:12px; font-weight:600; margin-top:6px}
+
+  .tip{font-size:12.5px; color:var(--night2); background:var(--frost); border-left:3px solid #76B8E8; border-radius:0 8px 8px 0; padding:9px 12px; margin:10px 0 2px}
+  .tip.alert{background:#FBE9E9; border-left-color:var(--rail); color:#7A1A1A}
+  .tip b{font-weight:600}
+
+  .check-group h4{font-family:var(--display); font-weight:700; font-size:14px; margin:16px 4px 8px; color:var(--night2)}
+  ul.check{list-style:none; display:grid; gap:7px}
+  ul.check li{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:13.5px; display:flex; gap:11px; align-items:flex-start; cursor:pointer; transition:background .15s,color .15s; user-select:none}
+  ul.check li .box{width:18px; height:18px; border:2px solid var(--faint); border-radius:5px; flex-shrink:0; margin-top:1px; position:relative; transition:.15s}
+  ul.check li.done{background:#EEF4EF; color:var(--faint)}
+  ul.check li.done .box{background:#3E8E5A; border-color:#3E8E5A}
+  ul.check li.done .box::after{content:"\2713"; color:#fff; font-size:12px; font-weight:700; position:absolute; top:-2px; left:2px}
+  ul.check li.done .txt{text-decoration:line-through}
+
+  .reminders{background:#0E2233; color:#E3EEF6; border-radius:16px; padding:20px 18px; margin-top:8px}
+  .reminders h3{font-family:var(--display); font-weight:700; font-size:16px; color:#fff; margin-bottom:12px}
+  .reminders li{font-size:13px; list-style:none; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.10); display:flex; gap:10px}
+  .reminders li:last-child{border-bottom:none}
+  .reminders li .b{color:var(--rail); font-weight:700; font-family:var(--mono); font-size:12px}
+  .reminders li b{color:#fff}
+  .foot{font-size:11px; color:var(--faint); text-align:center; margin:22px 14px 0; line-height:1.6}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Roteiro de bolso · inverno</div>
+  <h1>Suíça<br>em <span>Família</span></h1>
+  <div class="arc"><b>25 dez</b> <i>&rarr;</i> <b>05 jan</b> &nbsp;·&nbsp; Zürich <i>&rarr;</i> Luzern <i>&rarr;</i> Interlaken <i>&rarr;</i> Zürich</div>
+</header>
+
+<div class="wrap">
+
+  <div class="section-label">Primeiro o mais urgente</div>
+
+  <div class="key urgent">
+    <span class="tag warn">Falta reservar</span>
+    <h3>2 noites em Zurique (03–05 jan)</h3>
+    <p>O voo de volta é só <strong>05 jan</strong>, então faltam as noites de <strong>03 e 04 de janeiro</strong> em Zurique. O app de vocês mesmo avisou isso. <strong>Reservem assim que possível</strong> — perto da estação central facilita o trajeto ao aeroporto no dia da volta.</p>
+  </div>
+
+  <div class="section-label">O essencial</div>
+
+  <div class="key">
+    <span class="tag flight">Voos · TAP</span>
+    <h3>Ida e volta</h3>
+    <p><strong>Ida — 25 dez</strong><br>
+    <span class="mono">SSA 00:25 &rarr; LIS 13:20</span> · TP 28<br>
+    <span class="mono">LIS 13:20 &rarr; ZRH 17:10</span> · TP 932<br>
+    Confirmação <strong>AYSCFR</strong></p>
+    <p style="margin-top:8px"><strong>Volta — 05 jan</strong><br>
+    <span class="mono">ZRH 13:30 &rarr; LIS 16:50</span> · TP 931<br>
+    <span class="mono">LIS 16:50 &rarr; REC 21:45</span> · TP 11<br>
+    Confirmação <strong>CE4IJE</strong></p>
+    <p style="margin-top:8px; color:var(--rail)"><strong>Confira a conexão em Lisboa:</strong> no app aparece com "0 min" — veja o tempo real entre os voos no seu bilhete.</p>
+  </div>
+
+  <div class="key">
+    <span class="tag pass">Suas bases</span>
+    <h3>Hotéis</h3>
+    <p><span class="mono">25–28 dez</span> · Zurique<br><strong>Harry's Home Zürich-Wallisellen</strong><br>Seidenplatz 3, 8304 Wallisellen · conf. 72071211947788<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
+    <p style="margin-top:8px"><span class="mono">28–31 dez</span> · Lucerna<br><strong>Hotel de la Paix</strong><br>Museggstrasse 2, 6004 Luzern · conf. 72071212305323<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Luzern+Bahnhof&destination=Museggstrasse+2,+6004+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
+    <p style="margin-top:8px"><span class="mono">31 dez–03 jan</span> · Interlaken<br><strong>Hotel Lötschberg</strong> <span style="color:var(--faint)">(perto de Interlaken West)</span><br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Interlaken+West&destination=Hotel+L%C3%B6tschberg,+Interlaken&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
+    <p style="margin-top:8px"><span class="mono">03–05 jan</span> · Zurique<br><strong style="color:var(--rail)">A reservar — 2 noites</strong></p>
+  </div>
+
+  <div class="key">
+    <span class="tag booked">Reservado &amp; pago</span>
+    <h3>Lindt Home of Chocolate</h3>
+    <p><span class="mono">27 dez · 10:00</span> &nbsp;·&nbsp; 4 adultos + 1 criança (grátis) &nbsp;·&nbsp; CHF 68,00</p>
+    <p style="margin-top:5px">Pedido <strong>1932968</strong> · Schokoladenplatz 1, Kilchberg · salve o ingresso offline.</p>
+  </div>
+
+  <div class="key">
+    <span class="tag pass">Swiss Travel Pass ✓ comprado</span>
+    <h3>Já incluído — é só mostrar</h3>
+    <p>Trens, barcos, ônibus, bondes e ~500 museus (FIFA e Verkehrshaus inclusos). O trem panorâmico Luzern–Interlaken também entra. Filho de 4 anos: grátis.</p>
+    <p style="margin-top:8px"><strong>Ainda se paga à parte:</strong> Titlis (teleférico ao topo) e o teleférico para Männlichen — só com desconto. E a <strong>reserva de assento</strong> do trem panorâmico (31 dez).</p>
+  </div>
+
+  <div class="key">
+    <span class="tag howto">Como ler os trajetos</span>
+    <h3>O que está aqui &amp; o que ver no app</h3>
+    <p>Cada trecho traz a <strong>linha</strong>, <strong>onde embarcar</strong>, o tempo e a <strong>caminhada</strong> até o destino. A <strong>plataforma</strong> e o <strong>minuto exato</strong> mudam todo dia — veja no app <strong>SBB Mobile</strong> na véspera (digite origem e destino; ele dá horário, plataforma e baldeação).</p>
+  </div>
+
+  <div class="key">
+    <span class="tag howto">Entendendo o transporte</span>
+    <h3>Trem, bonde ou ônibus?</h3>
+    <p>Parece confuso, mas é simples. <strong>Quase tudo são trens.</strong> E <strong>tudo entra no Swiss Pass</strong> — é só entrar e mostrar.</p>
+    <p style="margin-top:9px">🚆 <strong>Trem.</strong> No app aparece com vários nomes, mas todos são trem:</p>
+    <p style="margin-top:3px; padding-left:6px">&bull; <strong>S-Bahn</strong> = trem urbano, trajetos curtos (ex.: Wallisellen ↔ Zurique, Zurique ↔ Kilchberg)<br>
+    &bull; <strong>IR / IC / Express</strong> = trem entre cidades (Zurique ↔ Lucerna, Lucerna ↔ Interlaken)<br>
+    &bull; <strong>zb / BOB / WAB</strong> = trens regionais e de montanha (Lucerna ↔ Engelberg, vales perto de Interlaken). Alguns sobem a serra com cremalheira (trilho dentado).</p>
+    <p style="margin-top:9px">🚋 <strong>Bonde (tram).</strong> Anda na rua, dentro da cidade. Ex.: <strong>Tram 6</strong> até o Zoo.</p>
+    <p style="margin-top:6px">🚌 <strong>Ônibus (bus).</strong> Dentro da cidade. Ex.: ônibus até o Verkehrshaus.</p>
+    <p style="margin-top:9px; color:var(--faint); font-size:12.5px">No app, todos aparecem juntos numa rota só — a sigla apenas diz o tipo. Em cada trecho abaixo, escrevi o modo por extenso.</p>
+  </div>
+
+  <div class="section-label">Dia a dia</div>
+
+  <!-- 25 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">25<small>dez</small></span><span class="dow">sex</span>
+      <span class="flag holiday">Natal · chega à noite</span>
+      <div class="day-title">Chegada em Zurique</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">17:10</span><span class="what">Pouso em Zürich Flughafen<span class="note">Com imigração e bagagem, contem sair do aeroporto por volta das 18h30.</span></span></div>
+      <div class="leg">
+        <span class="lbadge t">Trem/Tram</span>
+        <span class="od">🚆 Trem ou 🚋 bonde · Aeroporto &rarr; Wallisellen<small>use o SBB porta a porta; ele diz qual pegar (Swiss Pass cobre)</small></span>
+        <span class="dur">~23 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span>Hotel a poucos passos da parada (Seidenplatz 3).</span></div>
+      <div class="row"><span class="time">noite</span><span class="what"><b>Check-in</b> e descanso · só jantar hoje<span class="note">É Natal: comércio e a maioria dos restaurantes fechados. Garanta o jantar pelo hotel.</span></span></div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">26<small>dez</small></span><span class="dow">sáb</span>
+      <span class="flag holiday">Feriado</span>
+      <div class="day-title">FIFA Museum + Centro Histórico</div>
+    </div>
+    <div class="day-body">
+      <div class="tip"><b>Enxuguei o dia:</b> o app tinha 11 paradas — demais no inverno com criança e avós. Fiquei com o essencial e a pé.</div>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>trem urbano (S-Bahn), sentido centro</small></span>
+        <span class="dur">~12 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128649;</span><span><b>Troca de trem em Zürich HB</b> (~10 min). Desça e pegue outro trem (S-Bahn) da margem oeste do lago. Veja a plataforma no painel ou no app.</span></div>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Zürich HB &rarr; Enge<small>outro trem urbano, poucos minutos</small></span>
+        <span class="dur">~4 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~2 min a pé</b> — o FIFA Museum fica colado na estação de Enge.</span></div>
+      <div class="tip">Somando trens + troca + espera, conte <b>~20–25 min</b> porta a porta. Sem correria.</div>
+      <div class="row"><span class="time">10:00</span><span class="what"><b>FIFA Museum</b> · ~2h<span class="note">Interativo, com área de jogos de bola para o pequeno.</span></span></div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~15 min a pé</b> do FIFA (Enge) até Bürkliplatz, pela beira do lago (plano). Cansados? 🚋 bonde curto de Bahnhof Enge até Bürkliplatz, ~5 min.</span></div>
+      <div class="row"><span class="time">12:30</span><span class="what"><b>Almoço</b> em Bürkliplatz / beira do lago</span></div>
+      <div class="row"><span class="time">14:00</span><span class="what"><b>Centro histórico a pé</b> — nesta ordem<span class="note">Bürkliplatz → Fraumünster (vitrais) → Lindenhof (mirante) → atravesse a ponte até Grossmünster → Limmatquai (beira do rio) → suba a Bahnhofstrasse → termine na Zürich HB. ~1,5–2 km, plano, com paradas ~2h.</span></span></div>
+      <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=B%C3%BCrkliplatz,+Z%C3%BCrich&destination=Z%C3%BCrich+Hauptbahnhof&waypoints=Fraum%C3%BCnster,+Z%C3%BCrich%7CLindenhof,+Z%C3%BCrich%7CGrossm%C3%BCnster,+Z%C3%BCrich%7CLimmatquai,+Z%C3%BCrich&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>volta ao hotel · trem urbano, sem troca</small></span>
+        <span class="dur">~12 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span>Poucos passos da parada até o hotel.</span></div>
+      <div class="tip">O passeio termina na própria Zürich HB, de onde sai o trem de volta. Encerre antes de escurecer (~16:45). Com energia sobrando: <b>Museu Nacional Suíço</b>, ao lado da estação — coberto e bom para a família.</div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">27<small>dez</small></span><span class="dow">dom</span>
+      <div class="day-title">Lindt + Zoo de Zurique</div>
+    </div>
+    <div class="day-body">
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>trem urbano, sentido centro</small></span>
+        <span class="dur">~12 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128649;</span><span><b>Troca de trem em Zürich HB</b> (~10 min). Pegue o trem (S-Bahn) da margem oeste do lago, sentido Thalwil.</span></div>
+      <div class="leg">
+        <span class="lbadge s">S8/S24</span>
+        <span class="od">🚆 Trem · Zürich HB &rarr; Kilchberg<small>trem da margem oeste do lago</small></span>
+        <span class="dur">~12 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~10 min a pé</b> (700 m, plano, beira do lago) de Kilchberg até a Lindt.</span></div>
+      <div class="row"><span class="time">10:00</span><span class="what"><b>Lindt Home of Chocolate</b> · reservado<span class="note">~1h30. Fonte de chocolate gigante e degustação.</span></span></div>
+      <div class="row"><span class="time">12:30</span><span class="what">Almoço</span></div>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Kilchberg &rarr; Zürich HB<small>trem urbano, volta ao centro</small></span>
+        <span class="dur">~12 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128649;</span><span>Em Zürich HB, saia da estação e pegue o <b>bonde</b> na Bahnhofplatz (em frente).</span></div>
+      <div class="leg">
+        <span class="lbadge t">Tram 6</span>
+        <span class="od">🚋 Bonde · Zürich HB &rarr; Zoo<small>linha 6, sentido Zoo (ponto final)</small></span>
+        <span class="dur">~20 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~3 min</b> (leve subida) até a entrada do zoo.</span></div>
+      <div class="row"><span class="time">14:00</span><span class="what"><b>Zoo Zürich</b> · destaque <b>Masoala Hall</b><span class="note">Floresta tropical coberta e quentinha — o ponto alto do dia para o pequeno.</span></span></div>
+      <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar ao hotel</b><span class="note">Mesmo caminho ao contrário: 🚋 Tram 6 do Zoo até Zürich HB (~20 min) → 🚆 trem (S-Bahn) HB → Wallisellen (~12 min). ~40 min no total.</span></span></div>
+      <div class="tip">É o dia que mais cruza a cidade (Lindt fica a sudoeste, o zoo a nordeste). Tudo de transporte, mas é um vai e volta longo — sem pressa.</div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">28<small>dez</small></span><span class="dow">seg</span>
+      <div class="day-title">Transfer para Lucerna</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what">Check-out · vá com bagagem à Zürich HB (S-Bahn de Wallisellen, ~12 min)</span></div>
+      <div class="leg">
+        <span class="lbadge r">IR</span>
+        <span class="od">🚆 Trem entre cidades · Zürich HB &rarr; Luzern<small>InterRegio (IR) · direto, sem troca · sai aprox. :00 e :30</small></span>
+        <span class="dur">45–50 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~8–10 min</b> de Luzern Bahnhof até o Hotel de la Paix (Museggstrasse 2).</span></div>
+      <div class="row"><span class="time">tarde</span><span class="what"><b>Cidade Velha — tudo a pé</b>, nesta ordem<span class="note">Do hotel: Kapellbrücke (ponte coberta) → margem do rio Reuss → Jesuitenkirche → ponte Spreuerbrücke → praças e ruas da Altstadt. Tudo a poucos minutos entre si, plano. ~1,5–2 km no total.</span></span></div>
+      <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Hotel+de+la+Paix,+Luzern&waypoints=Kapellbr%C3%BCcke,+Luzern%7CJesuitenkirche,+Luzern%7CSpreuerbr%C3%BCcke,+Luzern%7CWeinmarkt,+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>Como voltar:</b> a pé, ~8–10 min até o Hotel de la Paix. Hoje não precisa de transporte.</span></div>
+      <div class="tip"><b>Jantar:</b> Wirtshaus Taube ou Old Swiss House (reserve).</div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">29<small>dez</small></span><span class="dow">ter</span>
+      <div class="day-title">Lucerna completa</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what"><b>Cidade Velha + Löwendenkmal</b> — a pé<span class="note">Do hotel (pertinho do Leão): Löwendenkmal → Altstadt/Weinmarkt → Kapellbrücke e Wasserturm → Schwanenplatz (confeitaria Bachmann), de onde sai o ônibus ao Verkehrshaus. ~1,5 km, plano.</span></span></div>
+      <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Schwanenplatz,+Luzern&waypoints=L%C3%B6wendenkmal,+Luzern%7CWeinmarkt,+Luzern%7CKapellbr%C3%BCcke,+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
+      <div class="leg">
+        <span class="lbadge t">Bus 6/8/24</span>
+        <span class="od">🚌 Ônibus · Centro &rarr; parada "Verkehrshaus"<small>linha 6, 8 ou 24 · embarque perto da estação/Schwanenplatz</small></span>
+        <span class="dur">~10 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~2 min</b> da parada até a entrada.</span></div>
+      <div class="row"><span class="time">14:00</span><span class="what"><b>Verkehrshaus</b> · Museu do Transporte · ~3h<span class="note">Um dos melhores da Europa para famílias — coberto. Incluído no Swiss Pass.</span></span></div>
+      <div class="leg">
+        <span class="lbadge t">Bus 6/8/24</span>
+        <span class="od">🚌 Ônibus · Verkehrshaus &rarr; Centro<small>mesma linha de volta, sentido estação</small></span>
+        <span class="dur">~10 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>Como voltar:</b> ônibus até o centro + ~8–10 min a pé ao Hotel de la Paix. ~20 min no total.</span></div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">30<small>dez</small></span><span class="dow">qua</span>
+      <span class="flag party">Neve ❄</span>
+      <div class="day-title">Engelberg + Titlis</div>
+    </div>
+    <div class="day-body">
+      <div class="tip alert"><b>Saiam cedo</b> — em dezembro escurece ~16:45.</div>
+      <div class="leg">
+        <span class="lbadge r">zb</span>
+        <span class="od">🚆 Trem regional · Luzern &rarr; Engelberg<small>Zentralbahn (zb) · direto · pegar ~08:30–09:00</small></span>
+        <span class="dur">~45 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~10–12 min</b> de Engelberg Bahnhof até a estação base do teleférico (ou ônibus local).</span></div>
+      <div class="row"><span class="time">manhã</span><span class="what"><b>Subida de teleférico</b> Engelberg &rarr; <b>Trübsee</b> &rarr; <b>Titlis</b><span class="note">Rotair giratório, gruta de gelo e neve no topo. O pequeno ama o Rotair.</span></span></div>
+      <div class="tip alert"><b>Atenção ao que está no seu app:</b> o "Trübsee Adventure / playground" é atração de <b>verão — fechado no inverno</b>. E entre Engelberg, Trübsee e Titlis é <b>teleférico, não carro</b>. No inverno, o forte é a <b>neve</b> em Trübsee/Titlis.</div>
+      <div class="row"><span class="time">tarde</span><span class="what">Quem não quiser ir ao topo fica em <b>Trübsee</b> (neve tranquila) ou no vilarejo de Engelberg<span class="note">Bom para os avós e o pequeno.</span></span></div>
+      <div class="leg">
+        <span class="lbadge r">zb</span>
+        <span class="od">🚆 Trem regional · Engelberg &rarr; Luzern<small>Zentralbahn (zb) · direto · mesma linha de volta</small></span>
+        <span class="dur">~45 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>Como voltar:</b> ~10–12 min a pé da base do teleférico até Engelberg Bahnhof, depois o trem. ~1h até o hotel.</span></div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">31<small>dez</small></span><span class="dow">qui</span>
+      <span class="flag party">Réveillon</span>
+      <div class="day-title">Trem panorâmico → Interlaken</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what">Manhã leve em Lucerna · check-out</span></div>
+      <div class="leg book">
+        <span class="lbadge r">Express</span>
+        <span class="od">🚆 Trem panorâmico · Luzern &rarr; Interlaken Ost<small>Luzern–Interlaken Express · RESERVE ASSENTO · pegar começo da tarde</small></span>
+        <span class="dur">~1h50<br>panorâmico</span>
+      </div>
+      <div class="tip">Sente do <b>lado direito</b> no início, pelas vistas dos lagos.</div>
+      <div class="leg">
+        <span class="lbadge r">local</span>
+        <span class="od">🚆 Trem · Interlaken Ost &rarr; Interlaken West<small>o mesmo trem segue poucos minutos</small></span>
+        <span class="dur">~5 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span>Hotel Lötschberg fica perto da estação West — curta caminhada.</span></div>
+      <div class="row"><span class="time">noite</span><span class="what"><b>Réveillon</b> · festa e fogos no Höhematte<span class="note">Jantar reservado. Como o hotel é perto, a volta é tranquila a pé.</span></span></div>
+    </div>
+  </div>
+
+  <!-- 01 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">01<small>jan</small></span><span class="dow">sex</span>
+      <span class="flag holiday">Ano Novo · feriado</span>
+      <div class="day-title">Interlaken tranquilo</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what">Sem pressa — todos cansados do Réveillon</span></div>
+      <div class="row"><span class="time">tarde</span><span class="what"><b>Höhematte Park</b> — tudo a pé<span class="note">Do hotel, caminhe pela avenida Höheweg até o gramado central, com vista do Jungfrau. ~10–15 min a pé, plano. A volta também é a pé — hoje não precisa de transporte.</span></span></div>
+      <div class="tip alert"><b>Harder Kulm está FECHADO no inverno.</b></div>
+      <div class="tip"><b>Dia-colchão:</b> se a montanha (dia 30) ou Wengen (dia 2) pegar tempo ruim, recupere hoje.</div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">02<small>jan</small></span><span class="dow">sáb</span>
+      <span class="flag holiday">Feriado</span>
+      <div class="day-title">Lauterbrunnen + Wengen</div>
+    </div>
+    <div class="day-body">
+      <div class="tip alert"><b>Wengen é SEM CARROS</b> — só de trem. O seu app marcou "carro"; ignore. Vocês têm o Swiss Pass, então é só embarcar.</div>
+      <div class="leg">
+        <span class="lbadge w">BOB</span>
+        <span class="od">🚆 Trem regional · Interlaken Ost &rarr; Lauterbrunnen<small>Berner Oberland Bahn (BOB) · ~a cada 30 min</small></span>
+        <span class="dur">~20 min</span>
+      </div>
+      <div class="tip alert"><b>O trem se divide em Zweilütschinen.</b> Entre na parte marcada <b>"Lauterbrunnen"</b> — a outra metade vai para Grindelwald.</div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~12 min</b> de Lauterbrunnen até a cachoeira <b>Staubbach Falls</b>, pela vila.</span></div>
+      <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Lauterbrunnen+Bahnhof&destination=Staubbach+Falls,+Lauterbrunnen&travelmode=walking" target="_blank" rel="noopener">🗺️ Rota a pé até a cachoeira (Google Maps)</a>
+      <div class="leg">
+        <span class="lbadge w">WAB</span>
+        <span class="od">🚆 Trem de cremalheira · Lauterbrunnen &rarr; Wengen<small>Wengernalpbahn (WAB) · embarque na plataforma ao lado · ~a cada 30 min</small></span>
+        <span class="dur">~15 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span>Wengen é pequena e sem carros — tudo a pé.</span></div>
+      <div class="row"><span class="time">tarde</span><span class="what"><b>Wengen</b> · vila alpina, vista do Eiger, Mönch e Jungfrau</span></div>
+      <div class="tip">Com céu limpo: teleférico Wengen &rarr; <b>Männlichen</b> (mirante; desconto com o Pass).</div>
+      <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar a Interlaken</b><span class="note">Mesmo caminho ao contrário: 🚆 trem Wengen → Lauterbrunnen (~15 min) → 🚆 trem (BOB) Lauterbrunnen → Interlaken Ost (~20 min) → 🚆 trem local Ost → West (~5 min) → a pé ao hotel. ~50 min no total. Na volta o BOB também se junta a outro trem — siga o sentido "Interlaken".</span></span></div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">03<small>jan</small></span><span class="dow">dom</span>
+      <div class="day-title">Volta para Zurique</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what">Manhã livre em Interlaken · check-out</span></div>
+      <div class="leg">
+        <span class="lbadge r">IC</span>
+        <span class="od">🚆 Trem entre cidades · Interlaken Ost &rarr; Zürich HB<small>InterCity (IC) · ~de hora em hora · pode trocar em Bern (ver app)</small></span>
+        <span class="dur">~2h</span>
+      </div>
+      <div class="row"><span class="time">tarde</span><span class="what"><b>Check-in</b> no hotel de Zurique <span style="color:var(--rail)">(a reservar)</span><span class="note">Fica perto da estação central para o dia da volta.</span></span></div>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">04<small>jan</small></span><span class="dow">seg</span>
+      <div class="day-title">Dia livre em Zurique</div>
+    </div>
+    <div class="day-body">
+      <div class="tip">Esse dia estava vazio no app. Minha sugestão para fechar a viagem com chave de ouro:</div>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Zürich HB &rarr; Cataratas do Reno<small>desça em Schaffhausen / Neuhausen Rheinfall · incluído no Swiss Pass</small></span>
+        <span class="dur">~50 min</span>
+      </div>
+      <div class="walk"><span class="pin">&#128694;</span><span><b>~5–10 min a pé</b> da estação (Neuhausen Rheinfall / Schloss Laufen) até os mirantes da cachoeira.</span></div>
+      <div class="row"><span class="time">passeio</span><span class="what"><b>Rheinfall</b> · a maior cachoeira da Europa<span class="note">Mirantes fáceis, bom para avós e criança, impressionante no inverno. ~1h30–2h no local.</span></span></div>
+      <div class="leg">
+        <span class="lbadge s">S-Bahn</span>
+        <span class="od">🚆 Trem · Rheinfall &rarr; Zürich HB<small>mesma viagem de volta · incluído no Swiss Pass</small></span>
+        <span class="dur">~50 min</span>
+      </div>
+      <div class="tip"><b>Plano B (mais tranquilo):</b> Zurique sem pressa — beira do lago, Museu Nacional, últimas compras na Bahnhofstrasse — e arrumar as malas para o voo cedo do dia seguinte.</div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="day">
+    <div class="day-head">
+      <span class="date-num">05<small>jan</small></span><span class="dow">ter</span>
+      <span class="flag air">Voo de volta</span>
+      <div class="day-title">Retorno ao Brasil</div>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">manhã</span><span class="what">Check-out · saia do hotel por volta das 09:30–10:00</span></div>
+      <div class="leg">
+        <span class="lbadge s">S2/S16</span>
+        <span class="od">🚆 Trem · Zürich HB &rarr; Zürich Flughafen<small>S-Bahn · a cada ~10 min</small></span>
+        <span class="dur">~10–13 min</span>
+      </div>
+      <div class="tip alert">Voo <b>ZRH 13:30</b> (TP 931). Esteja no aeroporto <b>~10:30</b> (3h antes). Depois: Lisboa &rarr; Recife, chegada <b>21:45</b>.</div>
+    </div>
+  </div>
+
+  <div class="section-label">Mapas · abra e salve tudo</div>
+  <div class="maps-group">
+    <p style="font-size:12.5px; color:var(--slate); margin:0 4px 10px">Toque para abrir no Google Maps. Lá, toque em <b>"Salvar"</b> para guardar cada lugar numa lista e estudar tudo junto. (Precisa de internet.)</p>
+
+    <h4>Hotéis</h4>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Harry%27s+Home+Z%C3%BCrich-Wallisellen,+Seidenplatz+3,+8304+Wallisellen" target="_blank" rel="noopener"><span class="ic">📍</span><span>Harry's Home — Wallisellen (25–28 dez)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hotel+de+la+Paix,+Museggstrasse+2,+6004+Luzern" target="_blank" rel="noopener"><span class="ic">📍</span><span>Hotel de la Paix — Lucerna (28–31 dez)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hotel+L%C3%B6tschberg,+Interlaken" target="_blank" rel="noopener"><span class="ic">📍</span><span>Hotel Lötschberg — Interlaken (31 dez–03 jan)</span><span class="arrow">↗</span></a>
+
+    <h4>Rotas a pé (já em modo a pé)</h4>
+    <a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=B%C3%BCrkliplatz,+Z%C3%BCrich&destination=Z%C3%BCrich+Hauptbahnhof&waypoints=Fraum%C3%BCnster,+Z%C3%BCrich%7CLindenhof,+Z%C3%BCrich%7CGrossm%C3%BCnster,+Z%C3%BCrich%7CLimmatquai,+Z%C3%BCrich&travelmode=walking" target="_blank" rel="noopener"><span class="ic">🗺️</span><span>Centro de Zurique (dia 26)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Hotel+de+la+Paix,+Luzern&waypoints=Kapellbr%C3%BCcke,+Luzern%7CJesuitenkirche,+Luzern%7CSpreuerbr%C3%BCcke,+Luzern%7CWeinmarkt,+Luzern&travelmode=walking" target="_blank" rel="noopener"><span class="ic">🗺️</span><span>Centro de Lucerna (dia 28)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Schwanenplatz,+Luzern&waypoints=L%C3%B6wendenkmal,+Luzern%7CWeinmarkt,+Luzern%7CKapellbr%C3%BCcke,+Luzern&travelmode=walking" target="_blank" rel="noopener"><span class="ic">🗺️</span><span>Lucerna, manhã: Leão → Bachmann (dia 29)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Lauterbrunnen+Bahnhof&destination=Staubbach+Falls,+Lauterbrunnen&travelmode=walking" target="_blank" rel="noopener"><span class="ic">🗺️</span><span>Lauterbrunnen → Staubbach Falls (dia 2)</span><span class="arrow">↗</span></a>
+
+    <h4>Atrações principais</h4>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=FIFA+Museum,+Z%C3%BCrich" target="_blank" rel="noopener"><span class="ic">📍</span><span>FIFA Museum (Zurique)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lindt+Home+of+Chocolate,+Kilchberg" target="_blank" rel="noopener"><span class="ic">📍</span><span>Lindt Home of Chocolate (Kilchberg)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zoo+Z%C3%BCrich" target="_blank" rel="noopener"><span class="ic">📍</span><span>Zoo Zürich</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Verkehrshaus+der+Schweiz,+Luzern" target="_blank" rel="noopener"><span class="ic">📍</span><span>Verkehrshaus — Museu do Transporte (Lucerna)</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Titlis,+Engelberg" target="_blank" rel="noopener"><span class="ic">📍</span><span>Engelberg / Titlis</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Wengen,+Switzerland" target="_blank" rel="noopener"><span class="ic">📍</span><span>Wengen</span><span class="arrow">↗</span></a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rheinfall,+Neuhausen" target="_blank" rel="noopener"><span class="ic">📍</span><span>Cataratas do Reno (Rheinfall)</span><span class="arrow">↗</span></a>
+  </div>
+
+  <div class="section-label">Mala de inverno · toque para marcar</div>
+
+  <div class="check-group">
+    <h4>Roupa (em camadas)</h4>
+    <ul class="check">
+      <li><span class="box"></span><span class="txt">Casaco impermeável e quente — um para cada</span></li>
+      <li><span class="box"></span><span class="txt">Camada térmica base (merino) + fleece / suéter</span></li>
+      <li><span class="box"></span><span class="txt">Calça à prova d'água para neve (essencial para a criança no Titlis)</span></li>
+      <li><span class="box"></span><span class="txt">Botas impermeáveis com sola antiderrapante — calçada congela</span></li>
+      <li><span class="box"></span><span class="txt">Gorro, cachecol e luvas (par extra para o pequeno)</span></li>
+      <li><span class="box"></span><span class="txt">Meias térmicas de lã</span></li>
+      <li><span class="box"></span><span class="txt">Roupa de banho (muitos hotéis têm spa/sauna)</span></li>
+    </ul>
+    <h4>Pele &amp; saúde</h4>
+    <ul class="check">
+      <li><span class="box"></span><span class="txt">Óculos de sol + protetor solar (a neve reflete muito no Titlis)</span></li>
+      <li><span class="box"></span><span class="txt">Hidratante labial e creme — o ar é seco</span></li>
+      <li><span class="box"></span><span class="txt">Remédios habituais + algo para enjoo + analgésico</span></li>
+    </ul>
+    <h4>Prático</h4>
+    <ul class="check">
+      <li><span class="box"></span><span class="txt">Adaptador de tomada tipo J (padrão suíço)</span></li>
+      <li><span class="box"></span><span class="txt">Power bank — o frio drena a bateria</span></li>
+      <li><span class="box"></span><span class="txt">App SBB Mobile + Swiss Pass, bilhetes e ingresso Lindt salvos offline</span></li>
+      <li><span class="box"></span><span class="txt">Mochila pequena, muda extra e lanches para a criança</span></li>
+    </ul>
+  </div>
+
+  <div class="section-label">Não esqueça</div>
+  <div class="reminders">
+    <h3>Lembretes que evitam perrengue</h3>
+    <ul>
+      <li><span class="b">01</span><span><b>Reserve o hotel de Zurique (03–05 jan)</b> — ainda está em aberto.</span></li>
+      <li><span class="b">02</span><span><b>Volta é dia 05 jan</b>, voo 13:30 — esteja no aeroporto às 10:30.</span></li>
+      <li><span class="b">03</span><span><b>Confira a conexão em Lisboa</b> nos dois voos (o app mostra "0 min").</span></li>
+      <li><span class="b">04</span><span><b>Reserve o assento do trem panorâmico</b> (31 dez).</span></li>
+      <li><span class="b">05</span><span><b>Feriados</b> 25, 26 dez e 01 jan: comércio fechado, transporte reduzido.</span></li>
+      <li><span class="b">06</span><span><b>Plataforma e horário</b> sempre no app SBB na véspera — muda em feriado.</span></li>
+    </ul>
+  </div>
+
+  <p class="foot">Cruzado com o seu planejamento no app e com as reservas (voos, hotéis e Lindt).<br>
+  Plataforma e horário exato dos trens: confirme no app SBB Mobile / sbb.ch antes de cada trecho.</p>
+
+</div>
+
+<div id="updateBar" style="display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;background:#0E2233;color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-family:'Inter',system-ui,sans-serif;font-size:13.5px;align-items:center;gap:10px;max-width:616px;margin:0 auto">
+  <span style="flex:1;line-height:1.35">📲 <b>Nova versão do guia disponível.</b></span>
+  <button id="updateBtn" style="background:#D8232A;color:#fff;border:none;border-radius:8px;padding:9px 14px;font-weight:700;font-size:13px;font-family:inherit;cursor:pointer">Atualizar</button>
+</div>
+
+<script>
+  // Checklist toggle
+  document.querySelectorAll('ul.check li').forEach(function(li){
+    li.addEventListener('click', function(){ li.classList.toggle('done'); });
+  });
+
+  // PWA: registra o service worker e avisa quando há nova versão
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('service-worker.js').then(function(reg){
+        function showUpdate(worker){
+          var bar = document.getElementById('updateBar');
+          var btn = document.getElementById('updateBtn');
+          bar.style.display = 'flex';
+          btn.onclick = function(){
+            worker.postMessage({type:'SKIP_WAITING'});
+            worker.addEventListener('statechange', function(){
+              if (worker.state === 'activated') window.location.reload();
+            });
+            // fallback: SW novo já assume com clients.claim → recarrega de qualquer jeito
+            setTimeout(function(){ window.location.reload(); }, 800);
+          };
+        }
+        if (reg.waiting) showUpdate(reg.waiting);
+        reg.addEventListener('updatefound', function(){
+          var nw = reg.installing;
+          if (!nw) return;
+          nw.addEventListener('statechange', function(){
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdate(nw);
+          });
+        });
+        // Verifica atualização sempre que o app volta ao primeiro plano
+        document.addEventListener('visibilitychange', function(){
+          if (document.visibilityState === 'visible') reg.update();
+        });
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
