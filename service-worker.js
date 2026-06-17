@@ -5,7 +5,7 @@
 const CACHE_VERSION = 'suica-v1';
 const CORE_ASSETS = [
   './',
-  './suica-em-familia.html',
+  './index.html',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',
@@ -58,6 +58,6 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE_VERSION).then((c) => c.put(req, copy)).catch(() => {});
         return res;
       })
-      .catch(() => caches.match(req).then((r) => r || caches.match('./suica-em-familia.html')))
+      .catch(() => caches.match(req).then((r) => r || caches.match('./index.html')))
   );
 });
