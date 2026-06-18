@@ -2,7 +2,7 @@
 // Estratégia: network-first (atualizações chegam rápido) com fallback offline (funciona sem sinal).
 // Para forçar uma atualização nos celulares, basta mudar CACHE_VERSION abaixo.
 
-const CACHE_VERSION = 'suica-v8';
+const CACHE_VERSION = 'suica-v9';
 const CORE_ASSETS = [
   './',
   './index.html',
