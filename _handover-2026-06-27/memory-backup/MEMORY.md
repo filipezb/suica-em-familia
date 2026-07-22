@@ -1,0 +1,2 @@
+- [Guia Suíça — mobile-only e app](feedback_suica_mobile_app.md) — guia da viagem deve ser PWA instalável, mobile-only, atualizado via URL única para os 5 viajantes
+- [Nome completo do Filipe](user_nome_completo.md) — Filipe Zottoli Bastos · emails, WhatsApp e quando usar nome completo em reservas

@@ -1,0 +1,22 @@
+7827efd FIFA Museum: Swiss Pass não permite reserva online (corrige aviso)
+04f4c94 Conexão TAP: tom calmo + plano caso perda (Filipe topou risco)
+e28cd29 TAP horários confirmados no app oficial - conexão volta = 1h15 (limite!)
+a302c34 Schuh: solicitação enviada, aguardando confirmação final
+87d9d12 Hotel 03-05 jan RESERVADO: Harry's Home Wallisellen
+dc0fa81 Dia 30: roteiro detalhado do Titlis (topo + Snow Park de Trübsee)
+e5d8b2c Atrações: preços reais + correções importantes do Swiss Pass
+f231e40 Dia 26: aviso de reserva online no FIFA Museum (sábado + feriado)
+001047e Dia 26: link Maps FIFA → Bürkliplatz (beira do lago)
+8cf2fac Dia 26: remove aviso 'Enxuguei o dia' (não agrega mais)
+8fcbb1a Dias do roteiro colapsáveis (+/-) — navegação muito mais leve
+ca0c7f4 Restaurantes Natal e Réveillon — opções para reservar
+d0131aa Enriquece TODOS os cards de trecho (.leg)
+8cf3e93 Piloto dia 25: enriquece locomoção chegada do aeroporto
+6b78a8f Corrige horários reais dos voos TAP + aviso sobre conexão apertada
+aeb58fb Enriquece TODOS os cards de trecho (.leg)
+74c7ab8 Enriquece cards de trecho (piloto no dia 26)
+6f3ce5e Troca aba Mala por Info; Dia fica só com os 12 dias do roteiro
+eb76ad5 Navegação em 5 módulos: Voo · Hotel · Dia · Mapas · Mala
+52f742f Reserva do trem panorâmico: corrige status (opcional, janela abre 30 set 2026)
+1329173 Renomeia HTML principal para index.html (URL curta no GitHub Pages)
+5533010 PWA: guia da Suíça instalável, mobile-first, com atualização automática
