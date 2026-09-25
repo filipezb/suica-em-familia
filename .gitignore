@@ -10,3 +10,11 @@ desktop.ini
 
 # Lixo eventual
 System.Drawing.*
+
+# Arquivos privados (nunca publicar)
+_handover-*/
+BRIEFING-*.md
+*.docx
+
+# Cópias de conflito do OneDrive
+*-LAPTOP-*.*
