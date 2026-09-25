@@ -12,6 +12,8 @@
 <meta name="description" content="Guia da viagem em família à Suíça · 25 dez – 05 jan">
 <!-- iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="color-scheme" content="only light">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Suíça">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -25,8 +27,8 @@
   :root{
     --snow:#F4F7FB; --paper:#FFFFFF;
     --night:#142A3D; --night2:#1E3C56;
-    --rail:#D8232A; --gold:#A9772A;
-    --slate:#5C6E7E; --faint:#8597A6;
+    --rail:#D8232A; --gold:#8A6020;
+    --slate:#5C6E7E; --faint:#66788A;
     --line:#DEE6EE; --frost:#E9F1F8;
     --display:'Archivo',system-ui,sans-serif;
     --body:'Inter',system-ui,sans-serif;
@@ -52,7 +54,7 @@
   }
   .app-title{font-family:var(--display); font-weight:800; font-size:19px; letter-spacing:-.01em; line-height:1.05}
   .app-title span{color:#76B8E8}
-  .app-sub{font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:#9FC3DD; margin-top:5px}
+  .app-sub{font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:#9FC3DD; margin-top:5px}
 
   main{padding:14px 18px 0}
 
@@ -72,7 +74,7 @@
   .bottom-nav button{
     flex:1; background:none; border:none; cursor:pointer;
     color:rgba(255,255,255,.55);
-    font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
     padding:10px 4px 9px;
     display:flex; flex-direction:column; align-items:center; gap:4px;
     transition:color .15s;
@@ -89,7 +91,7 @@
   .section-label::after{content:""; flex:1; height:1px; background:var(--line)}
 
   .key{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:15px 16px; margin-bottom:12px; position:relative}
-  .key .tag{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block; margin-bottom:9px}
+  .key .tag{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block; margin-bottom:9px}
   .tag.booked{background:#F3E9D6; color:var(--gold)}
   .tag.pass{background:var(--frost); color:var(--night2)}
   .tag.warn{background:#FBE3E3; color:var(--rail)}
@@ -104,6 +106,7 @@
   .day{background:var(--paper); border:1px solid var(--line); border-radius:16px; margin-bottom:14px; overflow:hidden}
   .day-head{display:flex; align-items:baseline; gap:12px; padding:16px 52px 12px 16px; border-bottom:1px solid var(--line); flex-wrap:wrap; position:relative; cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent; transition:background .15s}
   .day-head:active{background:rgba(0,0,0,.03)}
+  .day-head:focus-visible{outline:2px solid #1A73E8; outline-offset:-2px}
   .day-toggle{position:absolute; right:14px; top:18px; width:28px; height:28px; border-radius:50%; background:var(--frost); color:var(--night2); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700; font-size:18px; line-height:1; border:1px solid var(--line); flex-shrink:0; transition:background .15s, transform .2s}
   .day.collapsed .day-toggle::before{content:'+'}
   .day:not(.collapsed) .day-toggle{background:var(--night); color:#fff; border-color:var(--night)}
@@ -114,7 +117,7 @@
   .date-num small{font-size:13px; font-weight:600; color:var(--faint); margin-left:3px}
   .dow{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint)}
   .day-title{flex-basis:100%; font-family:var(--display); font-weight:700; font-size:17px; margin-top:7px; color:var(--night)}
-  .flag{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:6px; align-self:center}
+  .flag{font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:6px; align-self:center}
   .flag.holiday{background:#FBE3E3; color:var(--rail)}
   .flag.party{background:#EFE6F5; color:#6E4A8E}
   .flag.air{background:#E3EEF6; color:#0A66B5}
@@ -123,7 +126,7 @@
   .row{display:flex; gap:13px; padding:9px 0; border-bottom:1px dashed var(--line)}
   .row:last-child{border-bottom:none}
   .time{font-family:var(--mono); font-size:12px; font-weight:700; color:var(--night2); min-width:50px; padding-top:1px; flex-shrink:0}
-  .what{font-size:13.5px; color:var(--night)}
+  .what{font-size:13.5px; color:var(--night); min-width:0; overflow-wrap:anywhere}
   .what b{font-weight:600}
   .what .note{display:block; font-size:12px; color:var(--slate); margin-top:2px}
 
@@ -134,7 +137,7 @@
   .lbadge.r{background:var(--rail)}
   .lbadge.w{background:#6E4A8E}
   .lbadge.a{background:#0A66B5}
-  .leg .od{font-family:var(--mono); font-size:12.5px; font-weight:700; flex:1; line-height:1.35}
+  .leg .od{font-family:var(--mono); font-size:12.5px; font-weight:700; flex:1; line-height:1.35; min-width:0; overflow-wrap:anywhere}
   .leg .od small{display:block; font-weight:500; color:#9FC3DD; font-size:11px; margin-top:3px}
   .leg .dur{font-family:var(--mono); font-size:11px; color:#CFE2F0; text-align:right; flex-shrink:0; line-height:1.3}
   .leg.book{outline:2px solid var(--rail); outline-offset:0}
@@ -147,23 +150,16 @@
   .maproute:active{opacity:.85}
 
   .maps-group h4{font-family:var(--display); font-weight:700; font-size:14px; margin:16px 4px 8px; color:var(--night2)}
-  .maplink{display:flex; align-items:center; gap:10px; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px 13px; font-size:13px; color:var(--night); text-decoration:none; margin-bottom:7px}
+  /* .maplink: link inline dos cards; .maps-group .maplink: lista em blocos da aba Mapas */
+  .maplink{display:inline-flex; align-items:center; gap:5px; color:#1A73E8; text-decoration:none; font-size:12px; font-weight:600; margin-top:6px}
+  .maps-group .maplink{display:flex; gap:10px; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px 13px; font-size:13px; font-weight:500; color:var(--night); margin:0 0 7px}
   .maplink .ic{flex-shrink:0}
   .maplink .arrow{margin-left:auto; color:#1A73E8; font-weight:700; flex-shrink:0}
-  .maplink{display:inline-flex; align-items:center; gap:5px; color:#1A73E8; text-decoration:none; font-size:12px; font-weight:600; margin-top:6px}
 
   .tip{font-size:12.5px; color:var(--night2); background:var(--frost); border-left:3px solid #76B8E8; border-radius:0 8px 8px 0; padding:9px 12px; margin:10px 0 2px}
   .tip.alert{background:#FBE9E9; border-left-color:var(--rail); color:#7A1A1A}
   .tip b{font-weight:600}
 
-  .check-group h4{font-family:var(--display); font-weight:700; font-size:14px; margin:16px 4px 8px; color:var(--night2)}
-  ul.check{list-style:none; display:grid; gap:7px}
-  ul.check li{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:13.5px; display:flex; gap:11px; align-items:flex-start; cursor:pointer; transition:background .15s,color .15s; user-select:none}
-  ul.check li .box{width:18px; height:18px; border:2px solid var(--faint); border-radius:5px; flex-shrink:0; margin-top:1px; position:relative; transition:.15s}
-  ul.check li.done{background:#EEF4EF; color:var(--faint)}
-  ul.check li.done .box{background:#3E8E5A; border-color:#3E8E5A}
-  ul.check li.done .box::after{content:"\2713"; color:#fff; font-size:12px; font-weight:700; position:absolute; top:-2px; left:2px}
-  ul.check li.done .txt{text-decoration:line-through}
 
   .reminders{background:#0E2233; color:#E3EEF6; border-radius:16px; padding:20px 18px; margin-top:8px}
   .reminders h3{font-family:var(--display); font-weight:700; font-size:16px; color:#fff; margin-bottom:12px}
@@ -205,7 +201,8 @@
     <div class="key">
       <span class="tag flight">Voos · TAP</span>
       <h3>Ida e volta</h3>
-      <p><strong>Ida — 25 dez</strong><br>
+      <p><strong>Ida — madrugada de 24→25 dez</strong><br>
+      Estar no aeroporto de Salvador na <strong>noite de 24/12 (~22:00)</strong> — o voo decola 00:25 do dia 25.<br>
       <span class="mono">SSA 00:25 &rarr; LIS 11:40</span> · TP 28 (8h15)<br>
       <span class="mono">LIS 13:20 &rarr; ZRH 17:10</span> · TP 932 (2h50)<br>
       Conexão em LIS: <strong>1h 40 min</strong> · Confirmação <strong>AYSCFR</strong></p>
@@ -225,7 +222,7 @@
       <p style="margin-top:8px"><strong>Grátis com o Pass:</strong> FIFA Museum, Museu Nacional Suíço, todos os trens/bondes/ônibus do roteiro.</p>
       <p style="margin-top:8px"><strong>Com 50% de desconto (não grátis):</strong> Verkehrshaus (Lucerna), Titlis (teleférico Engelberg), teleférico Wengen→Männlichen.</p>
       <p style="margin-top:8px"><strong>Não cobre:</strong> Zoo Zürich, plataforma Schloss Laufen no Rheinfall — pagar à parte.</p>
-      <p style="margin-top:8px"><strong>Reserva de assento (trem panorâmico, 31 dez):</strong> é <strong>opcional</strong> — o trem não esgota, mas reservar garante lugar com vista no dia do Réveillon. Custa <strong>CHF 12/pessoa</strong> no inverno (criança de 4 anos grátis). A reserva só abre depois da troca anual de horário dos trens (13 dez). Lembretes no calendário em 30 set e 15 out ✓</p>
+      <p style="margin-top:8px"><strong>Reserva de assento (trem panorâmico, 31 dez):</strong> é <strong>opcional</strong> — o trem não esgota, mas reservar garante lugar com vista no dia do Réveillon. Custa <strong>CHF 12/pessoa</strong> no inverno (criança de 4 anos grátis). Reservas para viagens após 13/12 (novo horário dos trens) abrem quando o horário novo é publicado — tentar em 30 set e 15 out.</p>
     </div>
   </section>
 
@@ -234,7 +231,7 @@
     <div class="section-label">Suas bases</div>
 
     <div class="key">
-      <span class="tag pass">4 hotéis · todos reservados</span>
+      <span class="tag pass">3 hotéis · 4 estadias · todos reservados</span>
       <h3>Onde dormir</h3>
       <p><span class="mono">25–28 dez</span> · Zurique<br><strong>Harry's Home Zürich-Wallisellen</strong><br>Seidenplatz 3, 8304 Wallisellen · conf. 72071211947788<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
       <p style="margin-top:8px"><span class="mono">28–31 dez</span> · Lucerna<br><strong>Hotel de la Paix</strong><br>Museggstrasse 2, 6004 Luzern · conf. 72071212305323<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Luzern+Bahnhof&destination=Museggstrasse+2,+6004+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
@@ -243,13 +240,13 @@
     </div>
 
 
-    <div class="section-label">Restaurantes — reservar já</div>
+    <div class="section-label">Natal e Réveillon</div>
 
     <div class="key urgent">
       <span class="tag warn">🎄 Natal · 25 dez</span>
       <h3>Jantar em Wallisellen / aeroporto</h3>
-      <p>O Harry's Home <strong>não tem restaurante</strong> (só snack bar 24h). E no Natal quase tudo em Wallisellen fecha. Vocês chegam ~19:00 cansados.</p>
-      <p style="margin-top:8px"><strong>Plano A (recomendado):</strong> jantar no <strong>Zurique Flughafen</strong> antes de pegar o trem — vários restaurantes lá abrem mesmo no Natal (food court do nível Airside e do Airport Center).</p>
+      <p>O Harry's Home <strong>não tem restaurante</strong> (só snack bar 24h). E no Natal quase tudo em Wallisellen fecha. Vocês chegam cansados: ~19:00 indo direto, <strong>~20:00–20:30</strong> se jantarem no aeroporto.</p>
+      <p style="margin-top:8px"><strong>Plano A (recomendado):</strong> jantar no <strong>Zurique Flughafen</strong> antes de pegar o bonde — restaurantes e supermercados do <strong>Airport Center / Check-in 1–3</strong> (lado público), abertos 365 dias.</p>
       <p style="margin-top:8px"><strong>Plano B:</strong> ligar o hotel agora e perguntar opções: <a class="maplink" href="tel:+41447982800">📞 +41 44 798 2800</a> <a class="maplink" href="mailto:zuerich@harrys-home.com">✉️ zuerich@harrys-home.com</a></p>
       <p style="margin-top:8px"><strong>Plano C:</strong> sopa/sanduíche do snack bar 24h do próprio hotel (chegada zerados, qualquer comida quente serve).</p>
     </div>
@@ -257,12 +254,12 @@
     <div class="key">
       <span class="tag pass">📨 Aguardando confirmação</span>
       <h3>Jantar Réveillon · Grand Café Schuh</h3>
-      <p><strong>Solicitação enviada</strong> em 18 jun 2026 (resposta automática recebida). Confirmação final ainda não chegou — cobrando por e-mail (set 2026).</p>
+      <p><strong>Aguardando confirmação do restaurante.</strong> Se não confirmarem até <strong>15 out</strong>: reservar alternativa (Fondue Villa, Bären ou Stadthaus).</p>
       <p style="margin-top:8px"><strong>📍 Grand Café Restaurant Schuh</strong> · Höheweg 56, 3800 Interlaken<br>
       <strong>Data:</strong> 31 dez 2026 às <strong>19:00</strong> · 5 pessoas (4 adultos + 1 criança 4 anos)<br>
       <strong>Em nome de:</strong> Filipe Zottoli Bastos · filipezb@hotmail.com<br>
       <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grand+Caf%C3%A9+Schuh,+H%C3%B6heweg+56,+Interlaken" target="_blank" rel="noopener">📍 Maps</a> · <a class="maplink" href="https://schuh-interlaken.ch" target="_blank" rel="noopener">🌐 schuh-interlaken.ch</a> · 📞 +41 33 888 80 50</p>
-      <p style="margin-top:8px"><strong>🎆 Por que Schuh:</strong> desde 1818, colado ao <b>Höhematte</b> (onde tem os fogos) — sai do restaurante 23:50 e está na festa em 30 segundos. Sem caminhada no frio com criança/avós.</p>
+      <p style="margin-top:8px"><strong>🎆 Por que Schuh:</strong> desde 1818, colado ao <b>Höhematte</b> (virada ao ar livre) — sai do restaurante 23:50 e está no parque em 30 segundos. Sem caminhada no frio com criança/avós.</p>
     </div>
 
   </section>
@@ -271,37 +268,40 @@
   <section class="tab-section" data-tab="dia">
 
     <!-- 25 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-25">
       <div class="day-head">
         <span class="date-num">25<small>dez</small></span><span class="dow">sex</span>
         <span class="flag holiday">Natal · chega à noite</span>
         <div class="day-title">Chegada em Zurique</div>
       </div>
       <div class="day-body">
-        <div class="tip"><b>Total porta a porta:</b> pouso 17:15 → hotel <b>~19:00</b> (~1h45 com bagagem e imigração).</div>
+        <div class="tip"><b>Total porta a porta:</b> pouso 17:10 → hotel <b>~19:00</b> (~1h50 com bagagem, imigração e bonde).</div>
+        <div class="tip">🚐 Transfer em cotação (van com cadeirinha, ~CHF 59) — se fechar, o bonde vira plano B.</div>
 
         <div class="row"><span class="time">17:10</span><span class="what">Pouso em Zürich Flughafen<span class="note">Com imigração e bagagem, contem sair do "Arrivals" por volta das 18:10–18:30.</span></span></div>
 
         <div class="walk"><span class="pin">🛂</span><span><b>Imigração + bagagem (≈45–60 min):</b> siga "Arrivals" / "Bagage claim". Sem necessidade de comprar nada — Swiss Pass cobre a partir daqui. <b>Wifi grátis</b>: rede "Free_ZRH_Airport".</span></div>
 
-        <div class="walk"><span class="pin">📍</span><span><b>Onde achar o trem:</b> saindo do desembarque, vire à esquerda e siga as placas amarelas <b>"Trains / Bahnhof"</b>. Desce 1 piso por escada rolante. A estação fica colada ao terminal — ~5 min andando. <b>Painel azul gigante</b> mostra todos os trens.</span></div>
+        <div class="tip">🛒 Feriado + domingo em sequência (25, 26, 27): comprem lanches/café da manhã no <b>Coop/Migros do Airport Center</b> (lado público, após o desembarque), abertos no Natal.</div>
 
-        <div class="leg">
-          <span class="lbadge t">Trem/Tram</span>
-          <span class="od">🚆 Trem · ZRH Flughafen &rarr; Wallisellen<small>S-Bahn <b>S2</b>, sentido <b>Effretikon</b> · <b>1 parada</b> até descer (Glattbrugg) · a cada <b>~10 min</b> · plataformas <b>3–4</b> (geralmente) · Swiss Pass cobre</small></span>
-          <span class="dur">~12 min</span>
+        <div class="walk"><span class="pin">📍</span><span><b>Onde achar o bonde:</b> a parada do tram fica <b>em frente aos terminais</b>, do lado de fora do desembarque. Siga as placas <b>"Tram"</b>. Embarque no sentido <b>"Stettbach"</b>.</span></div>
+
+        <div class="leg" data-from="Zürich Flughafen" data-to="Wallisellen">
+          <span class="lbadge t">Tram 12</span>
+          <span class="od">🚋 Bonde · Zürich Flughafen &rarr; Wallisellen<small>Glattalbahn <b>Tram 12</b>, sentido <b>Stettbach</b> · desça em <b>"Wallisellen, Bahnhof"</b> · a cada <b>~7–15 min</b> · Swiss Pass cobre · alternativa: bus <b>759</b> (~22 min)</small></span>
+          <span class="dur">~24 min</span>
         </div>
 
-        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> S-Bahn tem espaço para malas no início e fim de cada vagão. Entre pela porta com símbolo de mala. <b>Vagões da frente</b> param mais perto da escada/saída em Wallisellen.</span></div>
+        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> o bonde é de piso baixo, entra rolando a mala. Fiquem perto das portas com as malas e o pequeno.</span></div>
 
-        <div class="walk"><span class="pin">📍</span><span><b>Em Wallisellen:</b> desça do trem, suba a escada rolante (ou elevador, marca "Lift"), siga a saída <b>"Seidenplatz"</b> (sul). O hotel fica do outro lado da praça, em frente — <b>~2 min a pé</b>.</span></div>
+        <div class="walk"><span class="pin">📍</span><span><b>Em Wallisellen:</b> desça na parada <b>"Wallisellen, Bahnhof"</b>. O hotel fica na <b>Seidenplatz</b>, ao lado da estação — <b>~2 min a pé</b>.</span></div>
 
         <div class="row"><span class="time">~19:00</span><span class="what"><b>Check-in</b> e descanso · só jantar hoje<span class="note">É Natal: comércio e a maioria dos restaurantes fechados em Wallisellen. <b>Veja a aba Hotel</b> — plano de jantar (aeroporto / hotel / snack bar). 🍽️</span></span></div>
       </div>
     </div>
 
     <!-- 26 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-26">
       <div class="day-head">
         <span class="date-num">26<small>dez</small></span><span class="dow">sáb</span>
         <span class="flag holiday">Feriado</span>
@@ -310,32 +310,25 @@
       <div class="day-body">
         <div class="tip"><b>Total porta a porta:</b> sair do hotel ~09:15 → FIFA 10:00 → volta antes de escurecer (~16:45).</div>
 
-        <div class="walk"><span class="pin">📍</span><span><b>Estação Wallisellen:</b> ~2 min do hotel, atravessando a Seidenplatz. Painel SBB mostra próximas S-Bahn.</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>sentido <b>sul / Zurique</b> · qualquer S-Bahn rumo à HB · <b>~2 paradas</b> até descer (Oerlikon, Hardbrücke) · a cada <b>~5–7 min</b> · 🪜 vagões da frente saem perto da escada</small></span>
-          <span class="dur">~12 min</span>
-        </div>
-
-        <div class="walk"><span class="pin">🚉</span><span><b>Troca em Zürich HB</b> (~10 min). Suba ao saguão central — <b>painel azul gigante</b> mostra todas as saídas. Procure "S2/S8/S24 → margem oeste / Thalwil". As plataformas <b>21–24</b> ficam no nível inferior (descer pela escada amarela).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Enge<small>linhas <b>S2 / S8 / S24</b>, sentido <b>margem oeste do lago</b> (Thalwil/Pfäffikon) · <b>1 parada</b> até descer (Wiedikon) · a cada <b>~5 min</b> · plataformas 21–24, geralmente</small></span>
-          <span class="dur">~4 min</span>
+        <div class="walk"><span class="pin">📍</span><span><b>Estação Wallisellen:</b> ~2 min do hotel, atravessando a Seidenplatz. Painel SBB mostra próximos trens — procure <b>S8</b> sentido <b>Pfäffikon SZ</b>.</span></div>
+        <div class="leg" data-from="Wallisellen" data-to="Zürich Enge">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Wallisellen &rarr; Enge<small>S-Bahn <b>S8</b>, sentido <b>Pfäffikon SZ</b> · <b>direto, sem troca</b> (passa por Oerlikon, Zürich HB e Wiedikon) · desça em <b>Zürich Enge</b> · a cada <b>30 min</b> · 🪜 vagões da frente saem perto da escada</small></span>
+          <span class="dur">~20 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Enge:</b> saída única pela escada rolante. O FIFA Museum fica colado na estação, do lado direito — <b>~2 min a pé</b>.</span></div>
-        <div class="tip">Somando trens + troca + espera, conte <b>~20–25 min</b> porta a porta. Sem correria.</div>
+        <div class="tip">Somando caminhada + trem + espera, conte <b>~30 min</b> porta a porta (o S8 passa a cada 30 min — confira o horário no app). Sem correria.</div>
         <div class="row"><span class="time">10:00</span><span class="what"><b>FIFA Museum</b> · ~2h<span class="note">Interativo, com área de jogos de bola para o pequeno. <b>Grátis com Swiss Pass</b> — apresentar na bilheteria, sem necessidade de reserva online.</span></span></div>
-        <div class="tip alert"><b>⚠️ Sábado + Stephanstag (feriado) = lotação.</b> Com Swiss Pass <b>não dá pra reservar horário online</b> (só apresentando o Pass na bilheteria). Mitigação: <b>chegar antes da abertura</b> (museu abre 10:00) — saiam do hotel ~08:30, ficam na fila do lado de fora antes da abertura. Primeiro horário costuma ser vazio. <b>Plano B:</b> se fila monstro, vão antes pro <b>Museu Nacional Suíço</b> (ao lado da Zürich HB, também grátis com Pass) e voltem pro FIFA depois das 11h.</div>
+        <div class="tip alert"><b>⚠️ Sábado + Stephanstag (feriado) = lotação.</b> Com Swiss Pass <b>não dá pra reservar horário online</b> (só apresentando o Pass na bilheteria). Mitigação: <b>chegar na abertura</b> (museu abre 10:00) — saindo do hotel ~09:15. Primeiro horário costuma ser vazio. <b>Plano B:</b> se fila monstro, vão antes pro <b>Museu Nacional Suíço</b> (ao lado da Zürich HB, também grátis com Pass) e voltem pro FIFA depois das 11h.</div>
         <div class="walk"><span class="pin">&#128694;</span><span><b>~15 min a pé</b> do FIFA (Enge) até Bürkliplatz, pela beira do lago (plano). Cansados? 🚋 bonde curto de Bahnhof Enge até Bürkliplatz, ~5 min.</span></div>
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=FIFA+Museum,+Z%C3%BCrich&destination=B%C3%BCrkliplatz,+Z%C3%BCrich&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
         <div class="row"><span class="time">12:30</span><span class="what"><b>Almoço</b> em Bürkliplatz / beira do lago</span></div>
         <div class="row"><span class="time">14:00</span><span class="what"><b>Centro histórico a pé</b> — nesta ordem<span class="note">Bürkliplatz → Fraumünster (vitrais) → Lindenhof (mirante) → atravesse a ponte até Grossmünster → Limmatquai (beira do rio) → suba a Bahnhofstrasse → termine na Zürich HB. ~1,5–2 km, plano, com paradas ~2h.</span></span></div>
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=B%C3%BCrkliplatz,+Z%C3%BCrich&destination=Z%C3%BCrich+Hauptbahnhof&waypoints=Fraum%C3%BCnster,+Z%C3%BCrich%7CLindenhof,+Z%C3%BCrich%7CGrossm%C3%BCnster,+Z%C3%BCrich%7CLimmatquai,+Z%C3%BCrich&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
-        <div class="walk"><span class="pin">📍</span><span><b>Voltando de Zürich HB:</b> entre pelo saguão principal (vindo do passeio na Bahnhofstrasse). Trens nordeste embarcam nas plataformas <b>41–44</b> (geralmente). Painel mostra "Wallisellen" ou destinos seguintes (Effretikon, Stettbach).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>sentido <b>nordeste</b> (Effretikon/Stettbach/Wetzikon) · <b>~2 paradas</b> até descer (Hardbrücke, Oerlikon) · a cada <b>~5–7 min</b></small></span>
+        <div class="walk"><span class="pin">📍</span><span><b>Voltando de Zürich HB:</b> entre pelo saguão principal (vindo do passeio na Bahnhofstrasse) e desça às plataformas <b>31–34 (Löwenstrasse, subsolo)</b>. Procure <b>S8</b> sentido <b>Winterthur</b>.</span></div>
+        <div class="leg" data-from="Zürich HB" data-to="Wallisellen">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>S-Bahn <b>S8</b>, sentido <b>Winterthur</b> · <b>1 parada</b> até descer (Oerlikon) · a cada <b>30 min</b> · plataformas 31–34</small></span>
           <span class="dur">~12 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Wallisellen:</b> saída <b>Seidenplatz</b> (sul, mesma da ida) · ~2 min a pé ao hotel.</span></div>
@@ -344,50 +337,44 @@
     </div>
 
     <!-- 27 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-27">
       <div class="day-head">
         <span class="date-num">27<small>dez</small></span><span class="dow">dom</span>
         <div class="day-title">Lindt + Zoo de Zurique</div>
       </div>
       <div class="day-body">
-        <div class="tip"><b>Total porta a porta:</b> sair ~08:30 → Lindt 10:00 (reservado) → Zoo à tarde → volta ~17:30. Dia que cruza a cidade (Lindt sudoeste, Zoo nordeste).</div>
+        <div class="tip"><b>Total porta a porta:</b> sair ~09:15 → Lindt 10:00 (reservado) → Zoo à tarde → volta ~17:30. Dia que cruza a cidade (Lindt sudoeste, Zoo nordeste).</div>
 
         <div class="walk"><span class="pin">📍</span><span><b>Estação Wallisellen:</b> ~2 min do hotel. <b>Salve o ingresso da Lindt offline</b> antes de sair (pedido 1932968).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>sentido <b>sul / Zurique</b> · <b>~2 paradas</b> até descer (Oerlikon, Hardbrücke) · a cada <b>~5–7 min</b></small></span>
-          <span class="dur">~12 min</span>
-        </div>
-        <div class="walk"><span class="pin">🚉</span><span><b>Troca em Zürich HB</b> (~10 min). Mesma rota do dia 26: saguão central → painel azul → plataformas <b>21–24</b> (nível inferior, escada amarela).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S8/S24</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Kilchberg<small>linhas <b>S8 / S24</b>, sentido <b>Pfäffikon SZ / Thayngen</b> · <b>~3 paradas</b> até descer (Wiedikon, Enge, Wollishofen) · a cada <b>~10–15 min</b> · plataformas 21–24</small></span>
-          <span class="dur">~12 min</span>
+        <div class="leg" data-from="Wallisellen" data-to="Kilchberg ZH">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Wallisellen &rarr; Kilchberg<small>S-Bahn <b>S8</b>, sentido <b>Pfäffikon SZ</b> · <b>direto, sem troca</b> (passa por Zürich HB, Enge e Wollishofen) · a cada <b>30 min</b> · confira o horário no app</small></span>
+          <span class="dur">~25 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Kilchberg:</b> saída única. Vá pela <b>Seestrasse</b> rumo ao sul (beira do lago à esquerda) — <b>~10 min a pé, 700 m, plano</b>. Lindt fica grande à direita, impossível perder.</span></div>
         <div class="row"><span class="time">10:00</span><span class="what"><b>Lindt Home of Chocolate</b> · reservado<span class="note">~1h30. Fonte de chocolate gigante e degustação.</span></span></div>
         <div class="row"><span class="time">12:30</span><span class="what">Almoço</span></div>
-        <div class="walk"><span class="pin">📍</span><span><b>Voltando de Kilchberg:</b> mesma plataforma, sentido oposto (norte/Zurique). Painel mostra "Zürich HB" ou destinos depois (Effretikon, Rapperswil).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Kilchberg &rarr; Zürich HB<small>sentido <b>Zurique HB</b> · <b>~3 paradas</b> até descer (Wollishofen, Enge, Wiedikon) · a cada <b>~10–15 min</b></small></span>
-          <span class="dur">~12 min</span>
+        <div class="walk"><span class="pin">📍</span><span><b>Voltando de Kilchberg:</b> mesma estação, plataforma do sentido oposto. Procure <b>S8</b> sentido <b>Winterthur</b> — painel mostra "Zürich HB".</span></div>
+        <div class="leg" data-from="Kilchberg ZH" data-to="Zürich HB">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Kilchberg &rarr; Zürich HB<small>S-Bahn <b>S8</b>, sentido <b>Winterthur</b> · <b>3 paradas</b> até descer (Wollishofen, Enge, Wiedikon) · a cada <b>30 min</b> · chega nas plataformas 31–34 (subsolo)</small></span>
+          <span class="dur">~13 min</span>
         </div>
         <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> suba ao saguão central → siga "Ausgang Bahnhofplatz" (saída pela praça frontal). Ao sair, atravesse para a parada do <b>Tram 6</b>, à esquerda. Painel da parada mostra "Zoo" como destino.</span></div>
-        <div class="leg">
+        <div class="leg" data-nosbb>
           <span class="lbadge t">Tram 6</span>
           <span class="od">🚋 Bonde · Zürich HB &rarr; Zoo<small><b>Tram 6</b>, sentido <b>Zoo</b> — é o <b>ponto final</b>, impossível passar · embarque em Bahnhofplatz/HB · a cada <b>~7–10 min</b></small></span>
           <span class="dur">~20 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>No Zoo:</b> ponto final, todos descem. <b>~3 min subida leve</b> até a entrada (placas direcionando). 🚻 Banheiros e bilheteria ao lado da entrada.</span></div>
         <div class="row"><span class="time">14:00</span><span class="what"><b>Zoo Zürich</b> · destaque <b>Masoala Hall</b><span class="note">Floresta tropical coberta e quentinha — o ponto alto do dia para o pequeno. <b>⚠️ Não está no Swiss Pass:</b> adulto ~CHF 30, criança &lt;6 anos grátis. Total ~CHF 120 (4 adultos). 10% off comprando online via SBB. <a href="https://www.zoo.ch/en/onlineshop/einzeleintritte/single-entry" target="_blank" rel="noopener" style="color:#1A73E8">🎫 zoo.ch/tickets</a></span></span></div>
-        <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar ao hotel</b><span class="note">Mesmo caminho ao contrário: 🚋 Tram 6 do Zoo até Zürich HB (~20 min) → 🚆 trem (S-Bahn) HB → Wallisellen (~12 min). ~40 min no total.</span></span></div>
+        <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar ao hotel</b><span class="note">Mesmo caminho ao contrário: 🚋 Tram 6 do Zoo até Zürich HB (~20 min) → 🚆 <b>S8</b> sentido Winterthur, plataformas <b>31–34 (Löwenstrasse, subsolo)</b> → Wallisellen (~12 min). ~45 min no total, contando a espera (S8 a cada 30 min).</span></span></div>
         <div class="tip">É o dia que mais cruza a cidade (Lindt fica a sudoeste, o zoo a nordeste). Tudo de transporte, mas é um vai e volta longo — sem pressa.</div>
       </div>
     </div>
 
     <!-- 28 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-28">
       <div class="day-head">
         <span class="date-num">28<small>dez</small></span><span class="dow">seg</span>
         <div class="day-title">Transfer para Lucerna</div>
@@ -396,12 +383,17 @@
         <div class="tip"><b>Total porta a porta:</b> check-out ~09:00 → Luzern Bahnhof ~10:30 → hotel ~10:45 (~1h45 com mala). Tarde livre na Cidade Velha.</div>
 
         <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out, café no hotel, atravesse a Seidenplatz à estação Wallisellen. Use o <b>elevador</b> da estação (não a escada rolante — desconfortável com mala).</span></div>
-        <div class="row"><span class="time">manhã</span><span class="what">Check-out · S-Bahn de Wallisellen → Zürich HB (~12 min)</span></div>
+        <div class="row"><span class="time">manhã</span><span class="what">Check-out · S-Bahn de Wallisellen → Zürich HB</span></div>
+        <div class="leg" data-from="Wallisellen" data-to="Zürich HB">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich HB<small>S-Bahn <b>S8</b>, sentido <b>Pfäffikon SZ</b> · <b>1 parada</b> até descer (Oerlikon) · a cada <b>30 min</b> · chega nas plataformas 31–34 (subsolo)</small></span>
+          <span class="dur">~12 min</span>
+        </div>
 
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> desça do S-Bahn → suba ao saguão central → trens IR/IC saem das <b>plataformas 3–18</b> (nível principal). Painel azul mostra "Luzern 10:30 Gleis 7" (exemplo). 🛒 Migros Take Away no térreo se quiser café/sanduíche.</span></div>
-        <div class="leg">
+        <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> desça do S-Bahn (subsolo) → suba ao saguão central → o <b>painel azul</b> mostra a plataforma do trem para Luzern. ⚠️ Confira <b>"Luzern" como destino final</b> — não pegue IC para Lugano. 🛒 Migros Take Away no térreo se quiser café/sanduíche.</span></div>
+        <div class="leg" data-from="Zürich HB" data-to="Luzern">
           <span class="lbadge r">IR</span>
-          <span class="od">🚆 Trem entre cidades · Zürich HB &rarr; Luzern<small>InterRegio <b>IR70</b>, sentido <b>Luzern</b> · <b>1 parada</b> até descer (<b>Zug</b>) · sai a cada <b>~30 min</b> (:00 e :30) · IC2/IC21 também servem</small></span>
+          <span class="od">🚆 Trem entre cidades · Zürich HB &rarr; Luzern<small>InterRegio <b>IR70</b> ou <b>IR75</b>, destino final <b>Luzern</b> · para em Thalwil e/ou Zug · sai a cada <b>~30 min</b></small></span>
           <span class="dur">45–50 min</span>
         </div>
         <div class="walk"><span class="pin">🧳</span><span><b>Bagageiro:</b> trens IR/IC têm prateleiras no fim de cada vagão. Sente perto pra ficar de olho. Vagões da 1ª classe (se quiserem upgrade) têm mais espaço.</span></div>
@@ -409,12 +401,12 @@
         <div class="row"><span class="time">tarde</span><span class="what"><b>Cidade Velha — tudo a pé</b>, nesta ordem<span class="note">Do hotel: Kapellbrücke (ponte coberta) → margem do rio Reuss → Jesuitenkirche → ponte Spreuerbrücke → praças e ruas da Altstadt. Tudo a poucos minutos entre si, plano. ~1,5–2 km no total.</span></span></div>
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Hotel+de+la+Paix,+Luzern&waypoints=Kapellbr%C3%BCcke,+Luzern%7CJesuitenkirche,+Luzern%7CSpreuerbr%C3%BCcke,+Luzern%7CWeinmarkt,+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
         <div class="walk"><span class="pin">&#128694;</span><span><b>Como voltar:</b> a pé, ~8–10 min até o Hotel de la Paix. Hoje não precisa de transporte.</span></div>
-        <div class="tip"><b>Jantar:</b> Wirtshaus Taube ou Old Swiss House (reserve).</div>
+        <div class="tip"><b>Jantar:</b> Wirtshaus Taube (reserve). Old Swiss House fecha às segundas — fica para o dia 29.</div>
       </div>
     </div>
 
     <!-- 29 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-29">
       <div class="day-head">
         <span class="date-num">29<small>dez</small></span><span class="dow">ter</span>
         <div class="day-title">Lucerna completa</div>
@@ -426,25 +418,26 @@
         <div class="row"><span class="time">manhã</span><span class="what"><b>Cidade Velha + Löwendenkmal</b> — a pé<span class="note">Do hotel (pertinho do Leão): Löwendenkmal → Altstadt/Weinmarkt → Kapellbrücke e Wasserturm → Schwanenplatz (confeitaria Bachmann), de onde sai o ônibus ao Verkehrshaus. ~1,5 km, plano.</span></span></div>
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Hotel+de+la+Paix,+Luzern&destination=Schwanenplatz,+Luzern&waypoints=L%C3%B6wendenkmal,+Luzern%7CWeinmarkt,+Luzern%7CKapellbr%C3%BCcke,+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Abrir esta rota a pé no Google Maps</a>
         <div class="walk"><span class="pin">📍</span><span><b>Schwanenplatz:</b> parada do bus fica em frente à <b>confeitaria Bachmann</b>. Painel mostra próximas linhas — qualquer 6, 8 ou 24 serve.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Luzern, Schwanenplatz" data-to="Luzern Verkehrshaus">
           <span class="lbadge t">Bus 6/8/24</span>
           <span class="od">🚌 Ônibus · Centro &rarr; parada "Verkehrshaus"<small>bus <b>6 / 8 / 24</b>, sentido <b>Verkehrshaus</b> · embarque em <b>Schwanenplatz</b> · <b>~5 paradas</b> até descer · a cada <b>~5–7 min</b></small></span>
           <span class="dur">~10 min</span>
         </div>
-        <div class="walk"><span class="pin">📍</span><span><b>Parada "Verkehrshaus":</b> desça e atravesse a rua. <b>~2 min</b> até a entrada (placa azul). 🚻 Banheiros e guarda-volumes na entrada. Bilheteria mostra Swiss Pass — incluído.</span></div>
+        <div class="walk"><span class="pin">📍</span><span><b>Parada "Verkehrshaus":</b> desça e atravesse a rua. <b>~2 min</b> até a entrada (placa azul). 🚻 Banheiros e guarda-volumes na entrada. Na bilheteria mostre o Swiss Pass para 50% off.</span></div>
         <div class="row"><span class="time">14:00</span><span class="what"><b>Verkehrshaus</b> · Museu do Transporte · ~3h<span class="note">Um dos melhores da Europa para famílias — coberto. <b>⚠️ Swiss Pass dá só 50% desconto (não é grátis):</b> adulto cheio CHF 37 → <b>~CHF 18,50</b> com Pass. Filho 4 anos: grátis. Total: ~CHF 75 (4 adultos). Atrações extras (Planetário, Chocolate Adventure, Filmtheatre): +CHF 18 cada — opcional. <a href="https://www.verkehrshaus.ch/en/your-visit/besuch-planen/prices-and-tickets" target="_blank" rel="noopener" style="color:#1A73E8">🎫 verkehrshaus.ch</a></span></span></div>
         <div class="walk"><span class="pin">📍</span><span><b>Voltando:</b> parada do bus fica no <b>lado oposto</b> da rua (atravesse). Painel mostra "Bahnhof" como destino.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Luzern Verkehrshaus" data-to="Luzern, Schwanenplatz">
           <span class="lbadge t">Bus 6/8/24</span>
           <span class="od">🚌 Ônibus · Verkehrshaus &rarr; Centro<small>bus <b>6 / 8 / 24</b>, sentido <b>centro / Bahnhof</b> (lado oposto da parada de ida) · <b>~5 paradas</b> até descer · a cada <b>~5–7 min</b></small></span>
           <span class="dur">~10 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Desça em Schwanenplatz</b> (mesma de ida). ~8–10 min a pé subindo até o Hotel de la Paix. ~20 min total.</span></div>
+        <div class="tip"><b>Jantar:</b> Old Swiss House (reserve) — pertinho do Leão, a poucos minutos do hotel.</div>
       </div>
     </div>
 
     <!-- 30 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-30">
       <div class="day-head">
         <span class="date-num">30<small>dez</small></span><span class="dow">qua</span>
         <span class="flag party">Neve ❄</span>
@@ -455,33 +448,28 @@
         <div class="tip"><b>Total porta a porta:</b> hotel 08:00 → Engelberg 09:30 → topo Titlis 10:00 → almoço Trübsee 12:30 → Snow Park até 15:30 → Luzern ~17:00 (sem mala).</div>
 
         <div class="walk"><span class="pin">📍</span><span><b>Em Luzern Bahnhof:</b> trens da <b>Zentralbahn (zb)</b> saem das plataformas <b>11–14</b> (na ponta oposta ao saguão principal, atravessando os trilhos pela passagem subterrânea). Painel azul mostra "Engelberg". 🛒 Migros e padaria no saguão pra montar lanche.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Luzern" data-to="Engelberg">
           <span class="lbadge r">zb</span>
           <span class="od">🚆 Trem regional · Luzern &rarr; Engelberg<small>Zentralbahn <b>zb</b>, sentido <b>Engelberg</b> (ponto final) · <b>~7 paradas</b> até descer (Hergiswil, Stansstad, Stans, Wolfenschiessen, Grafenort etc.) · a cada <b>~30 min</b> · pegar <b>~08:30–09:00</b></small></span>
           <span class="dur">~45 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Engelberg Bahnhof:</b> ponto final. Saia pela frente da estação, vire à direita e siga as placas <b>"Titlis Talstation"</b> (estação base do teleférico) — <b>~10–12 min a pé, leve subida</b>. Ou pegue o bus local (gratuito com Swiss Pass) na parada em frente.</span></div>
-        <div class="row"><span class="time">09:30</span><span class="what"><b>Talstation Titlis</b> · subida começa<span class="note"><b>Ingresso único cobre tudo:</b> 3 teleféricos + Trübsee Snow Park + topo do Titlis. <b>CHF 48/adulto</b> com Swiss Pass (50% off) · <b>filho grátis (menor de 6)</b> · total <b>CHF 192</b>. <b>Sem reserva de assento</b> — compre online antes pra evitar fila: <a href="https://www.titlis.ch/en/information/prices" target="_blank" rel="noopener" style="color:#1A73E8">🎫 titlis.ch/prices</a></span></span></div>
+        <div class="row"><span class="time">09:30</span><span class="what"><b>Talstation Titlis</b> · subida começa<span class="note"><b>Ingresso único cobre tudo:</b> Titlis Xpress + Rotair + Trübsee Snow Park + topo do Titlis. <b>~CHF 48/adulto</b> com Swiss Pass (50% off) · <b>filho grátis (menor de 6)</b> · total <b>~CHF 192</b>. <b>Comprar ~27/12</b>, conforme a previsão do tempo, na loja SBB com <b>"Flex Cancellation"</b>: <a href="https://www.swissrailways.com/en/buy-titlis-ticket" target="_blank" rel="noopener" style="color:#1A73E8">🎫 swissrailways.com</a></span></span></div>
 
-        <div class="leg">
+        <div class="leg" data-nosbb>
           <span class="lbadge w">🚡</span>
-          <span class="od">🚡 Teleférico · Engelberg &rarr; Trübsee<small>cabine grande · sai a cada ~30 min · 1.000m → 1.800m</small></span>
-          <span class="dur">~4 min</span>
+          <span class="od">🚡 Titlis Xpress · Engelberg &rarr; Trübsee &rarr; Stand<small>gôndola de <b>8 lugares</b>, contínua — <b>sem horário</b>, é só embarcar · 1.000m → 1.800m → 2.428m</small></span>
+          <span class="dur">~10 + ~10 min</span>
         </div>
-        <div class="leg">
-          <span class="lbadge w">🚡</span>
-          <span class="od">🚡 Teleférico · Trübsee &rarr; Stand<small>cabine média · 1.800m → 2.428m</small></span>
-          <span class="dur">~6 min</span>
-        </div>
-        <div class="leg">
+        <div class="leg" data-nosbb>
           <span class="lbadge w">🌀 Rotair</span>
-          <span class="od">🌀 Rotair · Stand &rarr; Titlis (3.020m)<small>cabine giratória 360° — ✅ reaberta desde 11 dez 2026 · destaque do passeio, o pequeno vai amar</small></span>
+          <span class="od">🌀 Rotair · Stand &rarr; Titlis (3.020m)<small>cabine giratória 360° — volta a operar em <b>12 dez</b> (manutenção até 11 dez) · <b>funciona no dia 30</b> · destaque do passeio, o pequeno vai amar</small></span>
           <span class="dur">~5 min</span>
         </div>
 
         <div class="row"><span class="time">10:00</span><span class="what"><b>Topo do Titlis (3.020m)</b> · ~1h30<span class="note"><b>Tudo grátis no ingresso:</b> plataforma panorâmica 360° · <b>gruta de gelo</b> (caverna no glaciar com luz azul) · <b>Titlis Cliff Walk</b> (ponte suspensa mais alta da Europa, sobre o abismo). Há restaurante panorâmico (almoço ~CHF 25–35/pessoa). Pra quem sentir mal o frio/altitude, descer pra Trübsee a qualquer hora.</span></span></div>
 
-        <div class="tip alert"><b>👴 Plano B para avós:</b> se não quiserem subir aos 3.020m, ficam em <b>Trübsee</b> (parada do meio) já desde a subida — o teleférico de Engelberg até Trübsee é tranquilo, sem altura extrema. Reencontram a família na descida.</div>
+        <div class="tip alert"><b>👴 Plano B para avós:</b> se não quiserem subir aos 3.020m, ficam em <b>Trübsee</b> (parada do meio) já desde a subida — a gôndola de Engelberg até Trübsee é tranquila, sem altura extrema. Reencontram a família na descida.</div>
         <div class="tip"><b>👧 Com o pequeno no Titlis</b><br>
         • <b>Altitude:</b> criança aguenta bem uma visita curta aos 3.020m — fiquem ~1h no topo. Água sempre na mão. Se ficar enjoado, com dor de cabeça ou muito irritado: <b>desçam pra Trübsee</b>, passa rápido.<br>
         • <b>Topo primeiro, neve depois:</b> sobe com energia de manhã, gasta o resto no Snow Park à tarde. Na volta, <b>45 min de trem = soneca garantida</b>.<br>
@@ -490,19 +478,19 @@
         • <b>Óculos de sol + protetor FPS 50 + labial</b> — neve e glaciar refletem muito sol, olho de criança sofre.<br>
         • <b>Rotair:</b> a cabine gira sozinha — fique na janela com ele. <b>Gruta de gelo:</b> chão escorregadio, abaixo de zero, de mãos dadas. <b>Cliff Walk:</b> criança pode, sempre acompanhada e de mão dada (venta).<br>
         • <b>Sem carrinho:</b> neve e escadas — deixem no hotel.<br>
-        • <b>Banheiro</b> antes de cada teleférico e lanche na mochila (Migros da estação de Luzern).</div>
+        • <b>Banheiro</b> antes de cada subida e lanche na mochila (Migros da estação de Luzern).</div>
 
-        <div class="row"><span class="time">12:00</span><span class="what">⬇️ <b>Descer pra Trübsee</b> (1.800m)<span class="note">No mesmo Rotair + cabine — descida ~10 min. Lá embaixo está bem mais quente que no topo.</span></span></div>
+        <div class="row"><span class="time">12:00</span><span class="what">⬇️ <b>Descer pra Trübsee</b> (1.800m)<span class="note">Rotair até Stand + Titlis Xpress até Trübsee — descida ~15 min. Lá embaixo está bem mais quente que no topo.</span></span></div>
 
         <div class="row"><span class="time">12:30</span><span class="what">🍽️ <b>Almoço no restaurante de Trübsee</b><span class="note">Restaurante com vista do lago congelado e da serra. Cardápio de família (rösti, sopas quentes, schnitzel). ~CHF 25/pessoa.</span></span></div>
 
-        <div class="row"><span class="time">13:30</span><span class="what">⛷️ <b>Trübsee Snow Park</b> · tarde toda<span class="note"><b>GRÁTIS</b> com o ingresso de subida. Inclui: 🛷 <b>boias (snow tubes)</b> · <b>mini-bobs e balancers</b> · capacete · <b>magic carpet</b> (esteira que leva de volta ao topo da rampa, sem subir andando) · 🛝 <b>playground</b> com trator gigante. Aberto 9h-16h45. Equipamento todo emprestado de graça. Avós podem ficar no restaurante com vista enquanto a criança brinca.</span></span></div>
+        <div class="row"><span class="time">13:30</span><span class="what">⛷️ <b>Trübsee Snow Park</b> · tarde toda<span class="note"><b>GRÁTIS</b> com o ingresso de subida. Inclui: 🛷 <b>boias (snow tubes)</b> · <b>mini-bobs e balancers</b> · capacete · <b>magic carpet</b> (esteira que leva de volta ao topo da rampa, sem subir andando) · 🛝 <b>playground</b> com trator gigante. Aberto diariamente <b>9:00–16:45</b> a partir de 12 dez. Equipamento todo emprestado de graça. Avós podem ficar no restaurante com vista enquanto a criança brinca.</span></span></div>
 
-        <div class="tip alert"><b>Atenção ao que está no app original de vocês:</b> o "Trübsee Adventure / playground" mencionado lá é a versão de <b>verão — fechada no inverno</b>. Mas o <b>Snow Park de inverno</b> (boias, trenó, neve) está ABERTO em 30 dez — é justamente esse que vocês vão curtir.</div>
+        <div class="tip">🌧️ Tempo ruim no topo? Troquem com o dia 29 (Verkehrshaus é coberto) — o ingresso Flex permite.</div>
 
-        <div class="row"><span class="time">15:30</span><span class="what">⬇️ <b>Descer de Trübsee pra Engelberg</b><span class="note">Último teleférico, antes de escurecer (sol põe ~16:45).</span></span></div>
+        <div class="row"><span class="time">15:30</span><span class="what">⬇️ <b>Descer de Trübsee pra Engelberg</b><span class="note">Titlis Xpress até Engelberg (~10 min), antes de escurecer (sol põe ~16:45).</span></span></div>
         <div class="walk"><span class="pin">📍</span><span><b>Voltando:</b> mesma estação base do Titlis → ~10–12 min a pé até Engelberg Bahnhof (descida, mais fácil que a ida) ou bus local.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Engelberg" data-to="Luzern">
           <span class="lbadge r">zb</span>
           <span class="od">🚆 Trem regional · Engelberg &rarr; Luzern<small>Zentralbahn <b>zb</b>, sentido <b>Luzern</b> (ponto final) · mesmas <b>~7 paradas</b> de volta · a cada <b>~30 min</b></small></span>
           <span class="dur">~45 min</span>
@@ -512,40 +500,41 @@
     </div>
 
     <!-- 31 -->
-    <div class="day">
+    <div class="day" data-date="2026-12-31">
       <div class="day-head">
         <span class="date-num">31<small>dez</small></span><span class="dow">qui</span>
         <span class="flag party">Réveillon</span>
         <div class="day-title">Trem panorâmico → Interlaken</div>
       </div>
       <div class="day-body">
-        <div class="tip"><b>Total porta a porta:</b> check-out ~09:00 → Luzern ~09:45 → trem 10:06 → Interlaken West ~12:00 → hotel ~12:15.</div>
+        <div class="tip"><b>Total porta a porta:</b> check-out ~09:00 → Luzern ~09:45 → trem 10:06 → Interlaken Ost ~11:57 → Interlaken West ~12:10 → hotel ~12:20.</div>
 
         <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out, café, descer Museggstrasse pra Luzern Bahnhof (~10 min, leve descida). Hoje é dia de Réveillon — saia cedo, evita aglomeração.</span></div>
         <div class="row"><span class="time">manhã</span><span class="what">Manhã leve em Lucerna · check-out</span></div>
 
         <div class="walk"><span class="pin">🚉</span><span><b>Em Luzern Bahnhof:</b> trem panorâmico sai das mesmas <b>plataformas 11–14</b> da zb (lado dos trens regionais). Painel mostra "Interlaken Ost". Se reservou assento, confira o vagão e número (vai estar na confirmação).</span></div>
-        <div class="leg book">
+        <div class="leg book" data-from="Luzern" data-to="Interlaken Ost">
           <span class="lbadge r">Express</span>
-          <span class="od">🚆 Trem panorâmico · Luzern &rarr; Interlaken Ost<small>Luzern–Interlaken Express, sentido <b>Interlaken Ost</b> · <b>4 paradas</b> até descer (Hergiswil, Sarnen, Giswil, Brienz) · sai <b>~10:06</b> (a cada hora cheia) · reserva opcional · 🪟 lado <b>direito</b> p/ vista dos lagos</small></span>
+          <span class="od">🚆 Trem panorâmico · Luzern &rarr; Interlaken Ost<small>Luzern–Interlaken Express, sentido <b>Interlaken Ost</b> · principais paradas: Hergiswil, Sarnen, Giswil, <b>Meiringen</b> (o trem inverte o sentido aqui, normal), Brienz · sai <b>~10:06</b> (a cada hora cheia) · reserva opcional · 🪟 lado <b>direito</b> p/ vista dos lagos</small></span>
           <span class="dur">~1h50<br>panorâmico</span>
         </div>
         <div class="tip">🪟 Sente do <b>lado direito</b> no início (vistas dos lagos de Lungern e Brienz). Vagões panorâmicos têm janelas grandes — ideal pra criança.</div>
 
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Interlaken Ost:</b> ponto final do Express, todos descem. <b>NÃO saia da estação</b> — o trem local pra Interlaken West sai da mesma estação, geralmente plataforma 1. Painel mostra "Interlaken West".</span></div>
-        <div class="leg">
-          <span class="lbadge r">local</span>
-          <span class="od">🚆 Trem · Interlaken Ost &rarr; Interlaken West<small>o mesmo trem segue · <b>0 paradas</b> até descer · direto, ~5 min</small></span>
-          <span class="dur">~5 min</span>
+        <div class="walk"><span class="pin">🚉</span><span><b>Em Interlaken Ost:</b> ponto final do Express, todos descem. <b>NÃO saia da estação</b> — troque para qualquer trem sentido <b>Spiez / Bern</b>; a <b>1ª parada é Interlaken West</b>. Confira a plataforma no painel azul.</span></div>
+        <div class="leg" data-from="Interlaken Ost" data-to="Interlaken West">
+          <span class="lbadge r">IC/RE</span>
+          <span class="od">🚆 Trem · Interlaken Ost &rarr; Interlaken West<small>qualquer trem sentido <b>Spiez / Bern</b> · <b>1ª parada</b>, desça logo · sai ~12:05 (confira no app)</small></span>
+          <span class="dur">~4 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Interlaken West:</b> saída única. Hotel Lötschberg fica a <b>~3 min a pé</b> da estação (saia, vire à direita pela Bahnhofstrasse).</span></div>
-        <div class="row"><span class="time">18:30–19:30</span><span class="what"><b>Jantar de Réveillon</b> · restaurante reservado (ver aba <b>Hotel</b>)<span class="note">Top 4: Fondue Villa, Bären, Stadthaus, Café Schuh. Todos a pé do hotel. Menu Silvester (4–6 pratos) — reservar com antecedência.</span></span></div>
-        <div class="row"><span class="time">23:00</span><span class="what"><b>Höhematte</b> · festa e fogos à meia-noite<span class="note">~10 min a pé do hotel pela Höheweg. Cobertores e cachecóis — frio forte. Café Schuh é colado no parque, ótimo pra esquentar antes/depois.</span></span></div>
+        <div class="row"><span class="time">~12:20</span><span class="what"><b>Chegam antes do check-in</b> · malas na recepção<span class="note">Almoço por perto e tarde de descanso — a noite é longa.</span></span></div>
+        <div class="row"><span class="time">19:00</span><span class="what"><b>Jantar de Réveillon</b> · Grand Café Schuh<span class="note">Aguardando confirmação — ver aba <b>Hotel</b>. Menu Silvester (vários pratos), a pé do hotel.</span></span></div>
+        <div class="row"><span class="time">23:00</span><span class="what"><b>Virada ao ar livre no Höhematte</b><span class="note">Fogos esparsos — o show oficial é amanhã, 19:45. ~10 min a pé do hotel pela Höheweg. Cobertores e cachecóis — frio forte. Café Schuh é colado no parque, ótimo pra esquentar antes/depois.</span></span></div>
       </div>
     </div>
 
     <!-- 01 -->
-    <div class="day">
+    <div class="day" data-date="2027-01-01">
       <div class="day-head">
         <span class="date-num">01<small>jan</small></span><span class="dow">sex</span>
         <span class="flag holiday">Ano Novo · feriado</span>
@@ -556,35 +545,35 @@
 
         <div class="row"><span class="time">manhã</span><span class="what">Sem pressa — todos cansados do Réveillon</span></div>
         <div class="walk"><span class="pin">📍</span><span><b>Do Hotel Lötschberg ao Höhematte:</b> sair pela Bahnhofstrasse, virar à esquerda na avenida <b>Höheweg</b> (avenida principal de Interlaken). Caminhar até ver o grande gramado à direita, com vista do Jungfrau ao fundo. <b>~10–15 min, plano</b>.</span></div>
-        <div class="row"><span class="time">tarde</span><span class="what"><b>Höhematte Park</b> — tudo a pé<span class="note">Do hotel, caminhe pela avenida Höheweg até o gramado central, com vista do Jungfrau. ~10–15 min a pé, plano. A volta também é a pé — hoje não precisa de transporte.</span></span></div>
+        <div class="row"><span class="time">tarde</span><span class="what"><b>Höhematte Park</b> — tudo a pé<span class="note">Gramado central com vista do Jungfrau. A volta também é a pé — hoje não precisa de transporte.</span></span></div>
+        <div class="row"><span class="time">19:45</span><span class="what">🎆 <b>Fogos oficiais no Höhematte</b><span class="note">Logo após o show grátis <b>"Touch the Mountains"</b> na Höheweg. Horário ideal para o pequeno. Agasalho completo.</span></span></div>
         <div class="tip alert"><b>Harder Kulm está FECHADO no inverno.</b></div>
-        <div class="tip"><b>Dia-colchão:</b> se a montanha (dia 30) ou Wengen (dia 2) pegar tempo ruim, recupere hoje.</div>
+        <div class="tip"><b>Dia-colchão:</b> se o tempo estiver ruim amanhã, Wengen pode vir hoje.</div>
       </div>
     </div>
 
     <!-- 02 -->
-    <div class="day">
+    <div class="day" data-date="2027-01-02">
       <div class="day-head">
         <span class="date-num">02<small>jan</small></span><span class="dow">sáb</span>
         <span class="flag holiday">Feriado</span>
         <div class="day-title">Lauterbrunnen + Wengen</div>
       </div>
       <div class="day-body">
-        <div class="tip alert"><b>Wengen é SEM CARROS</b> — só de trem. O seu app marcou "carro"; ignore. Vocês têm o Swiss Pass, então é só embarcar.</div>
+        <div class="tip alert"><b>Wengen é sem carros</b> — só de trem (coberto pelo Pass).</div>
         <div class="tip"><b>Total porta a porta:</b> hotel ~09:00 → Lauterbrunnen 09:45 → cachoeira 10:00 → Wengen 11:30 → volta ~17:00.</div>
 
-        <div class="walk"><span class="pin">📍</span><span><b>Do hotel a Interlaken Ost:</b> Hotel Lötschberg é colado a Interlaken <b>West</b>, mas o BOB sai de Interlaken <b>Ost</b>. Pegue o trem local West→Ost (5 min, plataforma 1 da West) ou ônibus 102/103. <b>Não confunda as estações</b>.</span></div>
+        <div class="walk"><span class="pin">📍</span><span><b>Do hotel a Interlaken Ost:</b> Hotel Lötschberg é colado a Interlaken <b>West</b>, mas o BOB sai de Interlaken <b>Ost</b>. Pegue qualquer trem West→Ost (1 parada, ~4 min — painel mostra "Interlaken Ost") ou ônibus 102/103. <b>Não confunda as estações</b>.</span></div>
         <div class="walk"><span class="pin">🚉</span><span><b>Em Interlaken Ost:</b> BOB sai das plataformas <b>2A e 2B</b>. <b>⚠️ ATENÇÃO:</b> 2A vai pra <b>Lauterbrunnen</b> (vocês), 2B vai pra Grindelwald. Olhe o painel da plataforma antes de embarcar.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Interlaken Ost" data-to="Lauterbrunnen">
           <span class="lbadge w">BOB</span>
           <span class="od">🚆 Trem regional · Interlaken Ost &rarr; Lauterbrunnen<small>Berner Oberland Bahn <b>BOB</b>, sentido <b>Lauterbrunnen</b> · <b>2 paradas</b> até descer (Wilderswil, Zweilütschinen) · a cada <b>~30 min</b> · ⚠️ em Zweilütschinen o trem se divide — entre na parte "Lauterbrunnen"</small></span>
           <span class="dur">~20 min</span>
         </div>
-        <div class="tip alert"><b>O trem se divide em Zweilütschinen.</b> Mesmo entrando no vagão certo lá em Interlaken, fique atento ao anúncio — você não precisa fazer nada, só conferir que segue.</div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Lauterbrunnen:</b> ponto final do BOB. Saia da estação, vire à direita pela rua principal — a cachoeira <b>Staubbach Falls</b> aparece à esquerda em <b>~12 min a pé, plano</b>.</span></div>
         <a class="maproute" href="https://www.google.com/maps/dir/?api=1&origin=Lauterbrunnen+Bahnhof&destination=Staubbach+Falls,+Lauterbrunnen&travelmode=walking" target="_blank" rel="noopener">🗺️ Rota a pé até a cachoeira (Google Maps)</a>
         <div class="walk"><span class="pin">🚉</span><span><b>Em Lauterbrunnen:</b> WAB sai da plataforma <b>colada</b> à do BOB (mesma estação). Atravesse os trilhos pela passagem ou ande até o fim da plataforma. Painel mostra "Wengen / Kleine Scheidegg". Trem é de cremalheira (sobe a serra) — sente firme.</span></div>
-        <div class="leg">
+        <div class="leg" data-from="Lauterbrunnen" data-to="Wengen">
           <span class="lbadge w">WAB</span>
           <span class="od">🚆 Trem de cremalheira · Lauterbrunnen &rarr; Wengen<small>Wengernalpbahn <b>WAB</b>, sentido <b>Wengen / Kleine Scheidegg</b> · <b>1 parada</b> até descer (Wengwald) · a cada <b>~30 min</b> · plataforma colada ao BOB</small></span>
           <span class="dur">~15 min</span>
@@ -592,90 +581,97 @@
         <div class="walk"><span class="pin">📍</span><span><b>Em Wengen:</b> saia da estação direto para a praça central da vila. Wengen é pequena, sem carros — tudo se faz a pé em poucos minutos. 🚻 Banheiros públicos na estação.</span></div>
         <div class="row"><span class="time">tarde</span><span class="what"><b>Wengen</b> · vila alpina, vista do Eiger, Mönch e Jungfrau</span></div>
         <div class="tip">Com céu limpo: teleférico Wengen &rarr; <b>Männlichen</b> (mirante). Swiss Pass dá <b>50% desconto</b>: ida e volta <b>CHF 31/adulto</b> (total ~CHF 124 para 4 adultos, criança grátis). Sai a cada 15 min, último de volta 16:30. <a href="https://www.maennlichen.ch/en/winter/information/fare-prices-from-wengen.html" target="_blank" rel="noopener" style="color:#1A73E8">🎫 maennlichen.ch</a></div>
-        <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar a Interlaken</b><span class="note">Mesmo caminho ao contrário: 🚆 trem Wengen → Lauterbrunnen (~15 min) → 🚆 trem (BOB) Lauterbrunnen → Interlaken Ost (~20 min) → 🚆 trem local Ost → West (~5 min) → a pé ao hotel. ~50 min no total. Na volta o BOB também se junta a outro trem — siga o sentido "Interlaken".</span></span></div>
+        <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar a Interlaken</b><span class="note">Mesmo caminho ao contrário: 🚆 trem Wengen → Lauterbrunnen (~15 min) → 🚆 trem (BOB) Lauterbrunnen → Interlaken Ost (~20 min) → 🚆 trem Ost → West (sentido Spiez/Bern, 1ª parada, ~4 min) → a pé ao hotel. ~50 min no total. Na volta o BOB também se junta a outro trem — siga o sentido "Interlaken".</span></span></div>
       </div>
     </div>
 
     <!-- 03 -->
-    <div class="day">
+    <div class="day" data-date="2027-01-03">
       <div class="day-head">
         <span class="date-num">03<small>jan</small></span><span class="dow">dom</span>
         <div class="day-title">Volta para Zurique</div>
       </div>
       <div class="day-body">
-        <div class="tip"><b>Total porta a porta:</b> check-out ~10:00 → Interlaken Ost 10:30 → Zurich HB ~12:30 → hotel ~13:00 (~3h com mala).</div>
+        <div class="tip"><b>Total porta a porta:</b> check-out ~10:00 → Interlaken West ~10:30 → Zürich HB ~12:30 → almoço na HB → hotel ~14:00 (com mala).</div>
 
-        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out no Lötschberg, trem local West→Ost (5 min, plataforma 1). Em Ost, IC vai pra Zurique. <b>Bagageiro:</b> IC tem prateleiras no fim do vagão.</span></div>
+        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out no Lötschberg e ~3 min a pé até Interlaken <b>West</b> — embarquem ali mesmo, sem ir até Ost. <b>Bagageiro:</b> IC tem prateleiras no fim do vagão.</span></div>
         <div class="row"><span class="time">manhã</span><span class="what">Manhã livre em Interlaken · check-out</span></div>
 
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Interlaken Ost:</b> IC sai das plataformas <b>3 ou 4</b> (geralmente). Painel mostra "Zürich HB" ou "Basel" (alguns trens trocam em Bern). ⚠️ Confirme no app SBB se é direto ou com troca — em alguns horários só vai até Bern.</span></div>
-        <div class="leg">
+        <div class="walk"><span class="pin">🚉</span><span><b>Em Interlaken West:</b> IC sentido <b>Bern</b>. Confira a plataforma no painel azul. ⚠️ Confirme no app SBB: normalmente é <b>com troca em Bern</b>.</span></div>
+        <div class="leg" data-from="Interlaken West" data-to="Bern">
           <span class="lbadge r">IC</span>
-          <span class="od">🚆 Trem entre cidades · Interlaken Ost &rarr; Zürich HB<small>InterCity <b>IC</b>, sentido <b>Zurique HB</b> · <b>~4 paradas</b> até descer (Spiez, Thun, Bern, Olten) · sai a cada <b>~30 min</b> · pode trocar em Bern (ver app)</small></span>
-          <span class="dur">~2h</span>
+          <span class="od">🚆 Trem entre cidades · Interlaken West &rarr; Bern<small>InterCity <b>IC</b>, sentido <b>Bern</b> · desça em <b>Bern</b> · a cada <b>~30 min</b></small></span>
+          <span class="dur">~50 min</span>
         </div>
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> <b>não saia</b> — vocês vão pra Wallisellen. Suba ao saguão central, painel azul mostra trens nordeste (plataformas <b>41–44</b>), procure S-Bahn sentido Effretikon / Wallisellen.</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>S-Bahn sentido <b>nordeste</b> (Effretikon/Stettbach) · <b>~2 paradas</b> até descer (Hardbrücke, Oerlikon) · a cada <b>~5–7 min</b> · plataformas 41–44</small></span>
+        <div class="walk"><span class="pin">🚉</span><span><b>Troca em Bern:</b> painel azul mostra o próximo IC para <b>Zürich HB</b> e a plataforma. Use o elevador com mala.</span></div>
+        <div class="leg" data-from="Bern" data-to="Zürich HB">
+          <span class="lbadge r">IC</span>
+          <span class="od">🚆 Trem entre cidades · Bern &rarr; Zürich HB<small>InterCity <b>IC</b>, sentido <b>Zürich HB</b> · a cada <b>~30 min</b></small></span>
+          <span class="dur">~1h</span>
+        </div>
+        <div class="tip">Somando os dois IC e a troca, conte <b>~2h</b> de Interlaken West até Zürich HB.</div>
+        <div class="row"><span class="time">~12:30</span><span class="what"><b>Almoço na Zürich HB</b><span class="note">Lojas e restaurantes da estação abrem no domingo — almocem aqui antes do S8.</span></span></div>
+        <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> desçam às plataformas <b>31–34 (Löwenstrasse, subsolo)</b> e procurem <b>S8</b> sentido <b>Winterthur</b>.</span></div>
+        <div class="leg" data-from="Zürich HB" data-to="Wallisellen">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Zürich HB &rarr; Wallisellen<small>S-Bahn <b>S8</b>, sentido <b>Winterthur</b> · <b>1 parada</b> até descer (Oerlikon) · a cada <b>30 min</b> · plataformas 31–34</small></span>
           <span class="dur">~12 min</span>
         </div>
         <div class="walk"><span class="pin">📍</span><span><b>Em Wallisellen:</b> saída <b>Seidenplatz</b> (sul, mesma da chegada) · ~2 min a pé ao hotel. Caminho conhecido do dia 25.</span></div>
-        <div class="row"><span class="time">~13:00</span><span class="what"><b>Chegam antes do check-in</b> · malas na recepção<span class="note">O quarto só libera às <b>16:00</b>. Deixem as malas guardadas na recepção do Harry's Home e almocem por perto — ninguém carrega bagagem à tarde.</span></span></div>
+        <div class="row"><span class="time">~14:00</span><span class="what"><b>Chegam antes do check-in</b> · malas na recepção<span class="note">O quarto só libera às <b>16:00</b>. Deixem as malas guardadas na recepção do Harry's Home — ninguém carrega bagagem à tarde.</span></span></div>
         <div class="row"><span class="time">16:00</span><span class="what"><b>Check-in</b> · Harry's Home Wallisellen<span class="note">Mesmo hotel da chegada · conf. <b>72076039098951</b> · check-in a partir das 16:00 · check-out ter 05 jan <b>até 11:00</b> · 📞 +41 44 798 2800.</span></span></div>
       </div>
     </div>
 
     <!-- 04 -->
-    <div class="day">
+    <div class="day" data-date="2027-01-04">
       <div class="day-head">
         <span class="date-num">04<small>jan</small></span><span class="dow">seg</span>
         <div class="day-title">Dia livre em Zurique</div>
       </div>
       <div class="day-body">
-        <div class="tip">Esse dia estava vazio no app. Minha sugestão para fechar a viagem com chave de ouro:</div>
-        <div class="tip"><b>Total porta a porta:</b> hotel ~09:00 → Rheinfall 10:30 → mirantes 2h → volta ~14:00. Sem mala, ida e volta no dia.</div>
+        <div class="tip"><b>Total porta a porta:</b> hotel ~09:00 → Rheinfall ~10:00 → mirantes 2h → volta ~13:30. Sem mala, ida e volta no dia.</div>
 
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Zürich HB:</b> S9 sai das plataformas <b>21–24</b> (nível inferior, mesma área dos S-Bahn). Painel mostra "Rapperswil" ou "Schaffhausen". Pode também pegar IC pelas plataformas 3–18 (mais rápido).</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Zürich HB &rarr; Cataratas do Reno<small>S-Bahn <b>S9</b> (ou IC), sentido <b>Schaffhausen</b> · desça em <b>Neuhausen Rheinfall</b> (mais perto da cachoeira) · <b>~10–12 paradas</b> no caminho · a cada <b>~30 min</b> · Swiss Pass cobre</small></span>
-          <span class="dur">~50 min</span>
+        <div class="walk"><span class="pin">📍</span><span><b>Estação Wallisellen:</b> ~2 min do hotel. Procure <b>S8</b> sentido <b>Winterthur</b>.</span></div>
+        <div class="leg" data-from="Wallisellen" data-to="Winterthur">
+          <span class="lbadge s">S8</span>
+          <span class="od">🚆 Trem · Wallisellen &rarr; Winterthur<small>S-Bahn <b>S8</b>, sentido <b>Winterthur</b> (ponto final) · a cada <b>30 min</b> · Swiss Pass cobre</small></span>
+          <span class="dur">~15 min</span>
         </div>
-        <div class="walk"><span class="pin">📍</span><span><b>Em Neuhausen Rheinfall:</b> saída única, siga as placas <b>"Rheinfall"</b>. <b>~5–10 min a pé descida</b> até os mirantes (Schloss Laufen tem o melhor ângulo). 🚻 Banheiros nas plataformas de visita. Entrada paga (~CHF 5 adultos) só pra plataforma do castelo.</span></div>
-        <div class="row"><span class="time">passeio</span><span class="what"><b>Rheinfall</b> · a maior cachoeira da Europa<span class="note">Mirantes fáceis, bom para avós e criança, impressionante no inverno. ~1h30–2h no local. <b>Lado Neuhausen (Schlössli Wörth): grátis.</b> Plataforma do <b>Schloss Laufen</b> (ângulo mais próximo da queda): <b>CHF 5/adulto, CHF 3/criança 6-15</b> — total ~CHF 23 (não está no Swiss Pass). <b>⚠️ Barco fechado em janeiro</b> (só opera abr–out).</span></span></div>
-        <div class="walk"><span class="pin">📍</span><span><b>Voltando:</b> mesma estação Neuhausen Rheinfall, plataforma oposta (sentido sul/Zurique). Painel mostra "Zürich HB".</span></div>
-        <div class="leg">
-          <span class="lbadge s">S-Bahn</span>
-          <span class="od">🚆 Trem · Rheinfall &rarr; Zürich HB<small>sentido <b>Zurique HB</b> · mesmas <b>~10–12 paradas</b> de volta · a cada <b>~30 min</b></small></span>
-          <span class="dur">~50 min</span>
+        <div class="walk"><span class="pin">🚉</span><span><b>Troca em Winterthur:</b> painel azul mostra <b>S12</b> ou <b>S33</b> para "Schaffhausen" — confira a plataforma. Desçam em <b>"Schloss Laufen am Rheinfall"</b>.</span></div>
+        <div class="leg" data-from="Winterthur" data-to="Schloss Laufen am Rheinfall">
+          <span class="lbadge s">S12/S33</span>
+          <span class="od">🚆 Trem · Winterthur &rarr; Schloss Laufen am Rheinfall<small>S-Bahn <b>S12</b> ou <b>S33</b>, sentido <b>Schaffhausen</b> · desça em <b>Schloss Laufen am Rheinfall</b> (parada ao lado do castelo) · Swiss Pass cobre</small></span>
+          <span class="dur">~25 min</span>
         </div>
-        <div class="walk"><span class="pin">📍</span><span><b>Em Zürich HB:</b> saída principal pra Bahnhofstrasse. À noite, arrumar mala para voo de amanhã (atenção peso e líquidos).</span></div>
-        <div class="tip"><b>Plano B (mais tranquilo):</b> Zurique sem pressa — beira do lago, Museu Nacional, últimas compras na Bahnhofstrasse — e arrumar as malas para o voo cedo do dia seguinte.</div>
+        <div class="walk"><span class="pin">📍</span><span><b>Em Schloss Laufen am Rheinfall:</b> a parada fica colada ao castelo — siga as placas <b>"Rheinfall"</b> até os mirantes. 🚻 Banheiros na área de visita.</span></div>
+        <div class="row"><span class="time">passeio</span><span class="what"><b>Rheinfall</b> · a maior cachoeira da Europa<span class="note">Mirantes fáceis, bom para avós e criança, impressionante no inverno. ~1h30–2h no local. <b>Lado Neuhausen (Schlössli Wörth): grátis.</b> Plataforma do <b>Schloss Laufen</b> (ângulo mais próximo da queda): <b>CHF 5/adulto, filho grátis</b> — <b>CHF 20 no total</b> (não está no Swiss Pass). <b>⚠️ Barco fechado em janeiro</b> (só opera abr–out).</span></span></div>
+        <div class="row"><span class="time">volta</span><span class="what"><b>Como voltar ao hotel</b><span class="note">Mesmo caminho ao contrário: 🚆 S12/S33 Schloss Laufen am Rheinfall → Winterthur (~25 min) → 🚆 <b>S8</b> sentido Pfäffikon SZ → Wallisellen (~15 min). À noite, arrumar mala para o voo de amanhã (atenção peso e líquidos).</span></span></div>
+        <div class="tip"><b>Plano B (mais tranquilo):</b> Zurique sem pressa — beira do lago, Museu Nacional, últimas compras na Bahnhofstrasse — e arrumar as malas para o voo do dia seguinte.</div>
       </div>
     </div>
 
     <!-- 05 -->
-    <div class="day">
+    <div class="day" data-date="2027-01-05">
       <div class="day-head">
         <span class="date-num">05<small>jan</small></span><span class="dow">ter</span>
         <span class="flag air">Voo de volta</span>
         <div class="day-title">Retorno ao Brasil</div>
       </div>
       <div class="day-body">
-        <div class="tip"><b>Total porta a porta:</b> check-out 10:30 → estação Wallisellen 10:35 → S2 direto → Flughafen ~10:50 → check-in TAP até 11:00 (2h30 antes). <b>✨ Trajeto super curto</b> — hotel em Wallisellen está praticamente coladinho ao aeroporto.</div>
+        <div class="tip"><b>Total porta a porta:</b> sair do hotel ~10:15 → parada do Tram 12 ~10:20 → Flughafen ~10:45 → no aeroporto <b>~11:00</b> (2h30 antes do voo). <b>✨ Trajeto super curto</b> — hotel em Wallisellen está praticamente coladinho ao aeroporto.</div>
 
-        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out até 11:00. Café no hotel se servirem (snack bar 24h). ~2 min a pé do hotel à <b>estação Wallisellen</b> (saída Seidenplatz, mesmo caminho da chegada). Use o <b>elevador</b> da estação com mala.</span></div>
-        <div class="row"><span class="time">10:30</span><span class="what">Check-out · pegar mochilas + malas, caminhar à estação</span></div>
+        <div class="walk"><span class="pin">🧳</span><span><b>Com mala:</b> check-out até 11:00. Café no hotel se servirem (snack bar 24h). ~2 min a pé do hotel à parada do bonde <b>"Wallisellen, Bahnhof"</b> (mesmo lugar onde desceram na chegada).</span></div>
+        <div class="row"><span class="time">~10:15</span><span class="what">Check-out · pegar mochilas + malas, caminhar à parada do bonde</span></div>
 
-        <div class="walk"><span class="pin">🚉</span><span><b>Em Wallisellen:</b> S2 sentido <b>aeroporto</b> sai do mesmo lado das plataformas. Painel mostra "Zürich Flughafen". A cada <b>~10 min</b>. <b>Não precisa passar pela Zürich HB</b> — direto ao aeroporto.</span></div>
-        <div class="leg">
-          <span class="lbadge s">S2</span>
-          <span class="od">🚆 Trem · Wallisellen &rarr; Zürich Flughafen<small>S-Bahn <b>S2</b>, sentido <b>aeroporto</b> (Zürich Flughafen) · <b>~1 parada</b> até descer (Glattbrugg) · a cada <b>~10 min</b> · <b>direto, sem trocas</b> · vagões da frente saem perto da escada do aeroporto</small></span>
-          <span class="dur">~12 min</span>
+        <div class="walk"><span class="pin">🚋</span><span><b>Em Wallisellen, Bahnhof:</b> Tram 12 sentido <b>"Zürich Flughafen"</b>. A cada <b>~7–15 min</b>. <b>Não precisa passar pela Zürich HB</b> — direto ao aeroporto.</span></div>
+        <div class="leg" data-from="Wallisellen" data-to="Zürich Flughafen">
+          <span class="lbadge t">Tram 12</span>
+          <span class="od">🚋 Bonde · Wallisellen &rarr; Zürich Flughafen<small>Glattalbahn <b>Tram 12</b>, sentido <b>Zürich Flughafen</b> (ponto final) · a cada <b>~7–15 min</b> · piso baixo, entra com mala · Swiss Pass cobre</small></span>
+          <span class="dur">~24 min</span>
         </div>
-        <div class="walk"><span class="pin">📍</span><span><b>Em Zürich Flughafen:</b> ponto final. Saia pela escada rolante até "Departures / Abflüge" (1 piso acima). TAP no <b>Terminal 1</b>. Procurem balcão TAP/Star Alliance — geralmente fileira esquerda.</span></div>
-        <div class="tip">Voo <b>TP 931 ZRH 13:30</b> (chega LIS 15:35). Esteja no aeroporto <b>~10:30–11:00</b> (2h30 a 3h antes). Em Lisboa, TP 11 às <b>16:50</b> → Recife <b>21:45</b>.</div>
+        <div class="walk"><span class="pin">📍</span><span><b>Em Zürich Flughafen:</b> ponto final, em frente aos terminais. Siga as placas "Departures / Abflüge". TAP no <b>Terminal 1</b>. Procurem balcão TAP/Star Alliance — geralmente fileira esquerda.</span></div>
+        <div class="tip">Voo <b>TP 931 ZRH 13:30</b> (chega LIS 15:35). Esteja no aeroporto <b>~11:00</b> (2h30 antes). Em Lisboa, TP 11 às <b>16:50</b> → Recife <b>21:45</b>.</div>
       </div>
     </div>
 
@@ -737,26 +733,35 @@
       <p style="margin-top:3px; padding-left:6px">&bull; <strong>S-Bahn</strong> = trem urbano, trajetos curtos (ex.: Wallisellen ↔ Zurique, Zurique ↔ Kilchberg)<br>
       &bull; <strong>IR / IC / Express</strong> = trem entre cidades (Zurique ↔ Lucerna, Lucerna ↔ Interlaken)<br>
       &bull; <strong>zb / BOB / WAB</strong> = trens regionais e de montanha (Lucerna ↔ Engelberg, vales perto de Interlaken). Alguns sobem a serra com cremalheira (trilho dentado).</p>
-      <p style="margin-top:9px">🚋 <strong>Bonde (tram).</strong> Anda na rua, dentro da cidade. Ex.: <strong>Tram 6</strong> até o Zoo.</p>
+      <p style="margin-top:9px">🚋 <strong>Bonde (tram).</strong> Anda na rua, dentro da cidade. Ex.: <strong>Tram 12</strong> aeroporto ↔ Wallisellen, <strong>Tram 6</strong> até o Zoo.</p>
       <p style="margin-top:6px">🚌 <strong>Ônibus (bus).</strong> Dentro da cidade. Ex.: ônibus até o Verkehrshaus.</p>
       <p style="margin-top:9px; color:var(--faint); font-size:12.5px">No app, todos aparecem juntos numa rota só — a sigla apenas diz o tipo. Em cada trecho do roteiro, o modo está escrito por extenso.</p>
+    </div>
+
+    <div class="section-label">Emergência &amp; sol</div>
+    <div class="key">
+      <span class="tag warn">🆘 Emergência</span>
+      <h3>Números úteis</h3>
+      <p><span class="mono">144</span> ambulância · <span class="mono">117</span> polícia · <span class="mono">112</span> geral<br>
+      <strong>Farmácia de plantão:</strong> perguntar no hotel.</p>
+      <p style="margin-top:8px">🌅 <strong>Sol:</strong> nasce ~08:10, põe ~16:45.</p>
     </div>
 
     <div class="section-label">Não esqueça</div>
     <div class="reminders">
       <h3>Lembretes que evitam perrengue</h3>
       <ul>
-        <li><span class="b">01</span><span><b>Última base é Wallisellen</b> (03–05 jan, mesmo hotel da chegada) · conf. 72076039098951 · check-in <b>16:00</b>, mas vocês chegam ~13:00 — malas na recepção.</span></li>
-        <li><span class="b">02</span><span><b>Volta é dia 05 jan</b>, voo 13:30 — esteja no aeroporto às 10:30.</span></li>
-        <li><span class="b">03</span><span><b>Assento no trem panorâmico (31 dez)</b> — opcional, CHF 12/adulto. Reserva abre depois da troca de horário dos trens (13 dez); tentar em 30 set e 15 out.</span></li>
-        <li><span class="b">04</span><span><b>Feriados</b> 25, 26 dez e 01 jan: comércio fechado, transporte reduzido.</span></li>
+        <li><span class="b">01</span><span><b>Última base é Wallisellen</b> (03–05 jan, mesmo hotel da chegada) · conf. 72076039098951 · check-in <b>16:00</b>, mas vocês chegam ~14:00 (depois do almoço na HB) — malas na recepção.</span></li>
+        <li><span class="b">02</span><span><b>Volta é dia 05 jan</b>, voo 13:30 — sair do hotel ~10:15, no aeroporto <b>~11:00</b>.</span></li>
+        <li><span class="b">03</span><span><b>Assento no panorâmico</b> (31 dez, opcional) — ver aba <b>Voo</b>.</span></li>
+        <li><span class="b">04</span><span><b>Feriados</b> 25, 26 dez e 01 jan; <b>domingos</b> 27 dez e 03 jan: comércio de bairro fechado, transporte reduzido. Abertos: lojas/Coop/Migros do Airport Center (lado público) e das estações grandes (Zürich HB).</span></li>
         <li><span class="b">05</span><span><b>Plataforma e horário</b> sempre no app SBB na véspera — muda em feriado.</span></li>
-        <li><span class="b">06</span><span><b>Restaurantes Natal &amp; Réveillon</b> — reservar já. Detalhes na aba <b>Hotel</b>.</span></li>
+        <li><span class="b">06</span><span><b>Réveillon:</b> aguardando confirmação do Schuh — ver aba <b>Hotel</b>.</span></li>
+        <li><span class="b">07</span><span><b>Ingresso do Titlis</b> — comprar ~27/12 conforme a previsão, com Flex Cancellation (ver dia 30).</span></li>
       </ul>
     </div>
 
-    <p class="foot">Cruzado com o seu planejamento no app e com as reservas (voos, hotéis e Lindt).<br>
-    Plataforma e horário exato dos trens: confirme no app SBB Mobile / sbb.ch antes de cada trecho.</p>
+    <p class="foot">Plataforma e horário exato dos trens: confirme no app SBB Mobile / sbb.ch antes de cada trecho.</p>
   </section>
 
 </main>
@@ -769,7 +774,7 @@
   <button type="button" data-tab="info"><span class="ico">ℹ️</span><span>Info</span></button>
 </nav>
 
-<div id="updateBar" style="display:none;position:fixed;left:12px;right:12px;bottom:78px;z-index:9999;background:#0E2233;color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-family:'Inter',system-ui,sans-serif;font-size:13.5px;align-items:center;gap:10px;max-width:616px;margin:0 auto">
+<div id="updateBar" style="display:none;position:fixed;left:12px;right:12px;bottom:calc(82px + env(safe-area-inset-bottom));z-index:9999;background:#0E2233;color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 6px 24px rgba(0,0,0,.25);font-family:'Inter',system-ui,sans-serif;font-size:13.5px;align-items:center;gap:10px;max-width:616px;margin:0 auto">
   <span style="flex:1;line-height:1.35">📲 <b>Nova versão do guia disponível.</b></span>
   <button id="updateBtn" style="background:#D8232A;color:#fff;border:none;border-radius:8px;padding:9px 14px;font-weight:700;font-size:13px;font-family:inherit;cursor:pointer">Atualizar</button>
 </div>
@@ -777,16 +782,20 @@
 <script>
   // ---------- Tab switching ----------
   var TABS = ['voo','hotel','dia','mapas','info'];
+  var TAB_KEY = 'suica-tab';
   function setTab(name){
     if (TABS.indexOf(name) === -1) name = 'dia';
     document.querySelectorAll('section.tab-section').forEach(function(s){
       s.classList.toggle('active', s.dataset.tab === name);
     });
     document.querySelectorAll('.bottom-nav button').forEach(function(b){
-      b.classList.toggle('active', b.dataset.tab === name);
+      var on = b.dataset.tab === name;
+      b.classList.toggle('active', on);
+      if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
     });
     window.scrollTo({top:0, behavior:'instant'});
     if (location.hash !== '#'+name) history.replaceState(null, '', '#'+name);
+    try { localStorage.setItem(TAB_KEY, name); } catch(e){}
   }
   document.querySelectorAll('.bottom-nav button').forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.dataset.tab); });
@@ -794,45 +803,71 @@
   window.addEventListener('hashchange', function(){
     setTab((location.hash || '').replace('#',''));
   });
-  setTab((location.hash || '').replace('#','') || 'dia');
-
-  // ---------- Checklist toggle ----------
-  document.querySelectorAll('ul.check li').forEach(function(li){
-    li.addEventListener('click', function(){ li.classList.toggle('done'); });
-  });
+  var savedTab = null;
+  try { savedTab = localStorage.getItem(TAB_KEY); } catch(e){}
+  setTab((location.hash || '').replace('#','') || savedTab || 'dia');
 
   // ---------- Dias colapsáveis (+/-) ----------
+  var d0 = new Date();
+  var today = d0.getFullYear() + '-' + ('0'+(d0.getMonth()+1)).slice(-2) + '-' + ('0'+d0.getDate()).slice(-2);
+  var todayDay = null;
   document.querySelectorAll('.day').forEach(function(day){
     day.classList.add('collapsed');  // todos fechados por padrão
     var head = day.querySelector('.day-head');
     if (!head) return;
     var toggle = document.createElement('span');
     toggle.className = 'day-toggle';
-    toggle.setAttribute('aria-label', 'Abrir/fechar dia');
+    toggle.setAttribute('aria-hidden', 'true');
     head.appendChild(toggle);
-    head.addEventListener('click', function(){
-      day.classList.toggle('collapsed');
+    head.setAttribute('role', 'button');
+    head.setAttribute('tabindex', '0');
+    head.setAttribute('aria-expanded', 'false');
+    function flip(){
+      var collapsed = day.classList.toggle('collapsed');
+      head.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    }
+    head.addEventListener('click', flip);
+    head.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){ e.preventDefault(); flip(); }
     });
+    if (day.dataset.date === today) todayDay = day;
   });
+  // Durante a viagem: abre o dia de hoje e rola até ele (se a aba Dia estiver aberta)
+  if (todayDay){
+    todayDay.classList.remove('collapsed');
+    todayDay.querySelector('.day-head').setAttribute('aria-expanded', 'true');
+    if (document.querySelector('section.tab-section.active[data-tab="dia"]')){
+      setTimeout(function(){
+        var hdr = document.querySelector('.app-header');
+        var y = todayDay.getBoundingClientRect().top + window.pageYOffset - (hdr ? hdr.offsetHeight : 0) - 8;
+        window.scrollTo({top: Math.max(0, y), behavior:'instant'});
+      }, 50);
+    }
+  }
 
   // ---------- Gera botão "Ver no SBB" abaixo de cada .leg ----------
-  // Lê origem→destino do próprio card (linha "🚆 Trem · X → Y") e monta o link.
+  // Prefere data-from/data-to do .leg (nomes oficiais das estações); senão lê "X → Y" do card.
+  // .leg com data-nosbb (teleférico, Rotair, bonde do zoo) fica sem botão.
   document.querySelectorAll('.leg').forEach(function(leg){
-    var od = leg.querySelector('.od');
-    if (!od) return;
-    // Pega só o primeiro nó de texto (antes do <small>)
-    var firstText = '';
-    for (var i = 0; i < od.childNodes.length; i++){
-      var n = od.childNodes[i];
-      if (n.nodeType === 3) firstText += n.textContent;        // texto solto
-      else if (n.nodeType === 1 && n.tagName !== 'SMALL') firstText += n.textContent;
-      else if (n.tagName === 'SMALL') break;
+    if (leg.hasAttribute('data-nosbb')) return;
+    var origin = leg.getAttribute('data-from') || '';
+    var dest   = leg.getAttribute('data-to') || '';
+    if (!origin || !dest){
+      var od = leg.querySelector('.od');
+      if (!od) return;
+      // Pega só o texto antes do <small>
+      var firstText = '';
+      for (var i = 0; i < od.childNodes.length; i++){
+        var n = od.childNodes[i];
+        if (n.nodeType === 1 && n.tagName === 'SMALL') break;
+        firstText += n.textContent;
+      }
+      // Match "... · ORIGEM → DESTINO"
+      var m = firstText.match(/[·•]\s*([^→]+?)\s*→\s*(.+?)\s*$/);
+      if (!m) return;
+      origin = m[1].trim().replace(/\s+/g,' ');
+      dest   = m[2].trim().replace(/\s+/g,' ');
     }
-    // Match "... · ORIGEM → DESTINO"
-    var m = firstText.match(/[·•]\s*([^→→]+?)\s*[→→]\s*(.+?)\s*$/);
-    if (!m) return;
-    var origin = m[1].trim().replace(/\s+/g,' ');
-    var dest   = m[2].trim().replace(/\s+/g,' ');
     if (!origin || !dest) return;
     var url = 'https://www.sbb.ch/en?von=' + encodeURIComponent(origin) + '&nach=' + encodeURIComponent(dest);
     var btn = document.createElement('a');
@@ -848,30 +883,25 @@
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function(){
       navigator.serviceWorker.register('service-worker.js').then(function(reg){
-        function showUpdate(worker){
+        // O SW novo já faz skipWaiting + clients.claim; o botão só recarrega a página.
+        function showUpdate(){
           var bar = document.getElementById('updateBar');
           var btn = document.getElementById('updateBtn');
           bar.style.display = 'flex';
-          btn.onclick = function(){
-            worker.postMessage({type:'SKIP_WAITING'});
-            worker.addEventListener('statechange', function(){
-              if (worker.state === 'activated') window.location.reload();
-            });
-            setTimeout(function(){ window.location.reload(); }, 800);
-          };
+          btn.onclick = function(){ window.location.reload(); };
         }
-        if (reg.waiting) showUpdate(reg.waiting);
+        if (reg.waiting && navigator.serviceWorker.controller) showUpdate();
         reg.addEventListener('updatefound', function(){
           var nw = reg.installing;
           if (!nw) return;
           nw.addEventListener('statechange', function(){
-            if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdate(nw);
+            if ((nw.state === 'installed' || nw.state === 'activated') && navigator.serviceWorker.controller) showUpdate();
           });
         });
         document.addEventListener('visibilitychange', function(){
-          if (document.visibilityState === 'visible') reg.update();
+          if (document.visibilityState === 'visible') reg.update().catch(function(){});
         });
-      });
+      }).catch(function(){});
     });
   }
 </script>

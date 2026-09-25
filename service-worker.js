@@ -1,8 +1,10 @@
 // Suíça em Família — service worker
 // Estratégia: network-first (atualizações chegam rápido) com fallback offline (funciona sem sinal).
+// Navegação/index: busca na rede com timeout de 3 s e sem cache HTTP; se falhar, usa o cache.
 // Para forçar uma atualização nos celulares, basta mudar CACHE_VERSION abaixo.
 
-const CACHE_VERSION = 'suica-v27';
+const CACHE_VERSION = 'suica-v28';
+const NET_TIMEOUT_MS = 3000;
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -29,20 +31,35 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+// fetch com timeout: rejeita se a rede demorar mais que `ms`.
+function fetchWithTimeout(req, opts, ms) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error('timeout')), ms);
+    fetch(req, opts).then(
+      (res) => { clearTimeout(timer); resolve(res); },
+      (err) => { clearTimeout(timer); reject(err); }
+    );
+  });
+}
+
+function putInCache(req, res) {
+  const copy = res.clone();
+  caches.open(CACHE_VERSION).then((c) => c.put(req, copy)).catch(() => {});
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
 
-  // Google Fonts e Google Maps: deixar passar direto pela rede (e cachear o que der).
+  // Google Fonts e afins: rede primeiro, cacheia o que der (inclusive respostas opacas).
   // Se a rede falhar, devolve do cache se houver — senão, falha silenciosa.
   if (url.origin !== self.location.origin) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_VERSION).then((c) => c.put(req, copy)).catch(() => {});
+          if (res.ok || res.type === 'opaque') putInCache(req, res);
           return res;
         })
         .catch(() => caches.match(req))
@@ -50,12 +67,30 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Recursos do próprio app: network-first.
+  const isNavigation = req.mode === 'navigate' ||
+    url.pathname.endsWith('/') || url.pathname.endsWith('/index.html');
+
+  // Navegação/index: network-first com timeout de 3 s e sem cache HTTP.
+  if (isNavigation) {
+    event.respondWith(
+      fetchWithTimeout(req, { cache: 'no-cache' }, NET_TIMEOUT_MS)
+        .then((res) => {
+          if (res.ok) {
+            putInCache(req, res);
+            return res;
+          }
+          return caches.match(req).then((r) => r || caches.match('./index.html')).then((r) => r || res);
+        })
+        .catch(() => caches.match(req).then((r) => r || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Demais recursos do próprio app: network-first.
   event.respondWith(
     fetch(req)
       .then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE_VERSION).then((c) => c.put(req, copy)).catch(() => {});
+        if (res.ok) putInCache(req, res);
         return res;
       })
       .catch(() => caches.match(req).then((r) => r || caches.match('./index.html')))
