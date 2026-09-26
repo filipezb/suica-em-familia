@@ -125,6 +125,31 @@
   .key .mono{font-weight:700; color:var(--ink); letter-spacing:.01em}
   .key.urgent{background:#FFF6F5}
 
+  /* ---------- Hospedagem ---------- */
+  .stays-sub{font-size:14px !important; color:var(--muted) !important; margin-top:-2px}
+  .stays{margin-top:6px}
+  .stay{display:grid; grid-template-columns:64px 1fr; column-gap:14px; padding:16px 0; position:relative}
+  .stay + .stay{border-top:1px solid var(--hair)}
+  .stay:last-child{padding-bottom:2px}
+  .stay-dates{display:flex; flex-direction:column; padding-top:2px}
+  .sd-num{font-family:var(--display); font-weight:700; font-size:21px; line-height:1; letter-spacing:-.03em; color:var(--ink)}
+  .sd-mon{font-size:12.5px; font-weight:600; color:var(--muted); margin-top:4px}
+  .sd-n{font-size:12px; color:var(--muted); margin-top:1px}
+  .stay-city{display:block; font-size:13px; font-weight:600; color:var(--m-s)}
+  .stay-name{font-family:var(--display); font-weight:650; font-size:18px; letter-spacing:-.015em; line-height:1.2; margin-top:2px; color:var(--ink)}
+  .stay-addr{font-size:14px !important; color:var(--muted) !important; margin-top:3px}
+  .stay-actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:11px}
+  .stay-conf, .stay-go{
+    display:inline-flex; align-items:center; gap:7px; min-height:38px;
+    font:600 13.5px var(--body); border-radius:999px; padding:8px 13px;
+    text-decoration:none; cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  .stay-conf{border:none; background:var(--bg); color:var(--ink); font-variant-numeric:tabular-nums}
+  .stay-conf svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
+  .stay-conf.copied{background:#E3F3EC; color:#0E6A4C}
+  .stay-go{background:var(--m-s-t); color:#1D4F9E}
+  .stay.is-now .stay-city::after{content:"Vocês estão aqui"; margin-left:8px; font-size:12px; font-weight:700; color:#fff; background:var(--red); border-radius:999px; padding:2px 8px}
+
   /* ---------- Faixa de datas (aba Dia) ---------- */
   .date-strip{
     position:sticky; top:0; z-index:40;
@@ -358,15 +383,48 @@
 
   <!-- ============================ ABA: HOTEL ============================ -->
   <section class="tab-section" data-tab="hotel">
-    <div class="section-label">Suas bases</div>
+    <div class="section-label">Onde dormir</div>
 
-    <div class="key">
-      <span class="tag pass">3 hotéis · 4 estadias · todos reservados</span>
-      <h3>Onde dormir</h3>
-      <p><span class="mono">25–28 dez</span> · Zurique<br><strong>Harry's Home Zürich-Wallisellen</strong><br>Seidenplatz 3, 8304 Wallisellen · conf. 72071211947788<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
-      <p style="margin-top:8px"><span class="mono">28–31 dez</span> · Lucerna<br><strong>Hotel de la Paix</strong><br>Museggstrasse 2, 6004 Luzern · conf. 72071212305323<br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Luzern+Bahnhof&destination=Museggstrasse+2,+6004+Luzern&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
-      <p style="margin-top:8px"><span class="mono">31 dez–03 jan</span> · Interlaken<br><strong>Hotel Lötschberg</strong> <span style="color:var(--faint)">(perto de Interlaken West)</span><br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Interlaken+West&destination=Hotel+L%C3%B6tschberg,+Interlaken&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
-      <p style="margin-top:8px"><span class="mono">03–05 jan</span> · Zurique (Wallisellen, mesmo da chegada)<br><strong>Harry's Home Zürich-Wallisellen</strong><br>Seidenplatz 3, 8304 Wallisellen · conf. <span class="mono">72076039098951</span><br><a class="maplink" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">🗺️ Como chegar (estação → hotel)</a></p>
+    <div class="key stays-card">
+      <p class="stays-sub">3 hotéis, 4 estadias, todos reservados.</p>
+      <div class="stays">
+      <div class="stay" data-from="2026-12-25" data-to="2026-12-28">
+        <div class="stay-dates"><span class="sd-num">25–28</span><span class="sd-mon">dez</span><span class="sd-n">3 noites</span></div>
+        <div class="stay-body">
+          <span class="stay-city">Zurique</span>
+          <h4 class="stay-name">Harry's Home Wallisellen</h4>
+          <p class="stay-addr">Seidenplatz 3, 8304 Wallisellen</p>
+          <div class="stay-actions"><button type="button" class="stay-conf" data-copy="72071211947788" aria-label="Copiar número da reserva 72071211947788"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Reserva 72071211947788</span></button><a class="stay-go" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">Como chegar da estação</a></div>
+        </div>
+      </div>
+      <div class="stay" data-from="2026-12-28" data-to="2026-12-31">
+        <div class="stay-dates"><span class="sd-num">28–31</span><span class="sd-mon">dez</span><span class="sd-n">3 noites</span></div>
+        <div class="stay-body">
+          <span class="stay-city">Lucerna</span>
+          <h4 class="stay-name">Hotel de la Paix</h4>
+          <p class="stay-addr">Museggstrasse 2, 6004 Luzern</p>
+          <div class="stay-actions"><button type="button" class="stay-conf" data-copy="72071212305323" aria-label="Copiar número da reserva 72071212305323"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Reserva 72071212305323</span></button><a class="stay-go" href="https://www.google.com/maps/dir/?api=1&origin=Luzern+Bahnhof&destination=Museggstrasse+2,+6004+Luzern&travelmode=walking" target="_blank" rel="noopener">Como chegar da estação</a></div>
+        </div>
+      </div>
+      <div class="stay" data-from="2026-12-31" data-to="2027-01-03">
+        <div class="stay-dates"><span class="sd-num">31–03</span><span class="sd-mon">dez–jan</span><span class="sd-n">3 noites</span></div>
+        <div class="stay-body">
+          <span class="stay-city">Interlaken</span>
+          <h4 class="stay-name">Hotel Lötschberg</h4>
+          <p class="stay-addr">Perto da estação Interlaken West</p>
+          <div class="stay-actions"><a class="stay-go" href="https://www.google.com/maps/dir/?api=1&origin=Interlaken+West&destination=Hotel+L%C3%B6tschberg,+Interlaken&travelmode=walking" target="_blank" rel="noopener">Como chegar da estação</a></div>
+        </div>
+      </div>
+      <div class="stay" data-from="2027-01-03" data-to="2027-01-05">
+        <div class="stay-dates"><span class="sd-num">03–05</span><span class="sd-mon">jan</span><span class="sd-n">2 noites</span></div>
+        <div class="stay-body">
+          <span class="stay-city">Zurique</span>
+          <h4 class="stay-name">Harry's Home Wallisellen</h4>
+          <p class="stay-addr">Seidenplatz 3, 8304 Wallisellen · o mesmo da chegada</p>
+          <div class="stay-actions"><button type="button" class="stay-conf" data-copy="72076039098951" aria-label="Copiar número da reserva 72076039098951"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="3"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Reserva 72076039098951</span></button><a class="stay-go" href="https://www.google.com/maps/dir/?api=1&origin=Wallisellen+Bahnhof&destination=Seidenplatz+3,+8304+Wallisellen&travelmode=walking" target="_blank" rel="noopener">Como chegar da estação</a></div>
+        </div>
+      </div>
+      </div>
     </div>
 
 
@@ -1022,6 +1080,20 @@
       setTimeout(function(){ todayDay.scrollIntoView({block: 'start'}); }, 50);
     }
   }
+
+  // ---------- Hospedagem: copiar reserva + hotel atual ----------
+  document.querySelectorAll('.stay-conf').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = b.getAttribute('data-copy'), label = b.querySelector('span'), old = label.textContent;
+      function done(){ b.classList.add('copied'); label.textContent = 'Copiado'; setTimeout(function(){ b.classList.remove('copied'); label.textContent = old; }, 1600); }
+      if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(v).then(done, function(){}); }
+    });
+  });
+  (function(){
+    var d = new Date(), t = d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2);
+    var stays = document.querySelectorAll('.stay'), hit = false;
+    stays.forEach(function(st){ if (!hit && t >= st.dataset.from && t < st.dataset.to){ st.classList.add('is-now'); hit = true; } });
+  })();
 
   // ---------- Gera botão "Ver no SBB" abaixo de cada .leg ----------
   // Prefere data-from/data-to do .leg (nomes oficiais das estações); senão lê "X → Y" do card.
