@@ -8,8 +8,8 @@
   "id": "suica-em-familia",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0E2233",
-  "theme_color": "#0E2233",
+  "background_color": "#EDF2F5",
+  "theme_color": "#EDF2F5",
   "categories": ["travel", "lifestyle"],
   "icons": [
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
