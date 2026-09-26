@@ -40,7 +40,7 @@
     --display:'Bricolage Grotesque',system-ui,sans-serif;
     --body:'Lexend',system-ui,sans-serif;
     --r-lg:26px; --r-md:18px; --r-sm:12px;
-    --rail-x:27px;         /* posição da linha do dia */
+    --rail-x:21px;         /* posição da linha do dia */
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
@@ -189,7 +189,7 @@
   .day:not(.collapsed) .day-body{animation:enter .25s ease-out}
 
   /* ---------- A linha do dia ---------- */
-  .day-body{position:relative; padding:2px 18px 22px calc(var(--rail-x) + 24px)}
+  .day-body{position:relative; padding:2px 14px 22px calc(var(--rail-x) + 20px)}
   .day-body::before{
     content:""; position:absolute; left:var(--rail-x); top:0; bottom:26px; width:2px;
     background:var(--hair); border-radius:2px;
@@ -199,7 +199,7 @@
   /* parada (horário) */
   .row{display:block; padding:11px 0 9px}
   .row::before{
-    content:""; position:absolute; left:-30px; top:15px;
+    content:""; position:absolute; left:-25px; top:15px;
     width:12px; height:12px; border-radius:50%;
     background:var(--surface); box-shadow:inset 0 0 0 3px var(--ink);
   }
@@ -210,7 +210,7 @@
   /* caminhada: a linha vira pontilhado */
   .walk{display:block; font-size:14px; color:var(--ink-2); padding:8px 0}
   .walk::before{
-    content:""; position:absolute; left:-24px; top:0; bottom:0; width:2px;
+    content:""; position:absolute; left:-20px; top:0; bottom:0; width:2px;
     background:var(--surface) repeating-linear-gradient(to bottom, var(--walk) 0 3px, transparent 3px 8px);
   }
   .walk .pin{display:none}
@@ -218,25 +218,27 @@
   /* trecho de transporte: a linha ganha a cor do meio */
   .leg{
     --mc:var(--m-r); --mt:var(--m-r-t);
-    display:grid; grid-template-columns:auto 1fr auto; column-gap:12px; align-items:start;
+    display:grid; grid-template-columns:1fr auto; grid-template-areas:"badge dur" "od od";
+    column-gap:12px; row-gap:9px; align-items:center;
     background:var(--mt); border-radius:var(--r-md);
-    padding:13px 14px; margin:8px 0 2px;
+    padding:12px 14px 14px; margin:8px 0 2px;
   }
   .leg[data-mode="s"]{--mc:var(--m-s); --mt:var(--m-s-t)}
   .leg[data-mode="t"]{--mc:var(--m-t); --mt:var(--m-t-t)}
   .leg[data-mode="w"]{--mc:var(--m-w); --mt:var(--m-w-t)}
   .leg::before{
-    content:""; position:absolute; left:-26px; top:-8px; bottom:-8px; width:6px;
+    content:""; position:absolute; left:-22px; top:-8px; bottom:-8px; width:6px;
     border-radius:6px; background:var(--mc);
   }
   .lbadge{
+    grid-area:badge; justify-self:start;
     font-family:var(--display); font-weight:700; font-size:14px; color:#fff; background:var(--mc);
     border-radius:10px; padding:5px 9px; min-width:44px; text-align:center; line-height:1.15;
   }
-  .leg .od{font-family:var(--display); font-weight:650; font-size:16px; letter-spacing:-.015em; line-height:1.25; color:var(--ink); min-width:0; overflow-wrap:anywhere}
+  .leg .od{grid-area:od; font-family:var(--display); font-weight:650; font-size:16px; letter-spacing:-.015em; line-height:1.25; color:var(--ink); min-width:0; overflow-wrap:anywhere}
   .leg .od small{display:block; font-family:var(--body); font-weight:400; font-size:13.5px; letter-spacing:0; color:var(--ink-2); line-height:1.45; margin-top:5px}
   .leg .od small b{color:var(--ink)}
-  .leg .dur{font-family:var(--display); font-weight:700; font-size:14px; color:var(--mc); text-align:right; line-height:1.2; white-space:nowrap}
+  .leg .dur{grid-area:dur; font-family:var(--display); font-weight:700; font-size:14px; color:var(--mc); text-align:right; line-height:1.2; white-space:nowrap}
   .leg .dur br{display:none}
   .leg.book{box-shadow:inset 0 0 0 2px var(--mc)}
 
@@ -944,6 +946,8 @@
   document.querySelectorAll('.leg').forEach(function(leg){
     var b = leg.querySelector('.lbadge'); if (!b) return;
     ['s','t','w','r'].forEach(function(m){ if (b.classList.contains(m)) leg.dataset.mode = m; });
+    var od = leg.querySelector('.od'), t = od && od.firstChild;
+    if (t && t.nodeType === 3) t.textContent = t.textContent.replace(/^\s*\p{Extended_Pictographic}️?\s*/u, '');
   });
 
   // ---------- Dias colapsáveis ----------
