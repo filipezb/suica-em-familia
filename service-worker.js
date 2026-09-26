@@ -3,7 +3,7 @@
 // Navegação/index: busca na rede com timeout de 3 s e sem cache HTTP; se falhar, usa o cache.
 // Para forçar uma atualização nos celulares, basta mudar CACHE_VERSION abaixo.
 
-const CACHE_VERSION = 'suica-v31';
+const CACHE_VERSION = 'suica-v32';
 const NET_TIMEOUT_MS = 3000;
 const CORE_ASSETS = [
   './',
