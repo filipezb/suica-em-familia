@@ -18,3 +18,7 @@ BRIEFING-*.md
 
 # Cópias de conflito do OneDrive
 *-LAPTOP-*.*
+
+# Local
+.claude/
+*.pdf
