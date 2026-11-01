@@ -3,7 +3,7 @@
 // Navegação/index: busca na rede com timeout de 3 s e sem cache HTTP; se falhar, usa o cache.
 // Para forçar uma atualização nos celulares, basta mudar CACHE_VERSION abaixo.
 
-const CACHE_VERSION = 'suica-v44';
+const CACHE_VERSION = 'suica-v45';
 const NET_TIMEOUT_MS = 3000;
 const CORE_ASSETS = [
   './',
@@ -57,7 +57,7 @@ self.addEventListener('fetch', (event) => {
   // Se a rede falhar, devolve do cache se houver — senão, falha silenciosa.
   if (url.origin !== self.location.origin) {
     event.respondWith(
-      fetch(req)
+      fetchWithTimeout(req, undefined, NET_TIMEOUT_MS)
         .then((res) => {
           if (res.ok || res.type === 'opaque') putInCache(req, res);
           return res;
