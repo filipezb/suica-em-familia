@@ -30,7 +30,7 @@ Tudo aqui fica visível na internet. **Nunca commitar:** idades, telefone, e-mai
 - Pode commitar e publicar mudanças simples sem pedir, com mensagem no padrão do histórico: `Tópico: o que mudou`.
 - Compras: preferir pagar em R$ quando possível (evita IOF); site oficial em CHF só quando é o único canal.
 
-## Pendência: reserva de assento no panorâmico (31 dez)
+## Pendência: reserva de assento no panorâmico (31 dez) — ABRIU em 20/11/2026, falta reservar
 
 Luzern–Interlaken Express, PE 82 das 10:06 (plataforma 13). Reserva opcional, CHF 12/pessoa no inverno, em https://shop.luzern.com/en/routing/zentralbahn-luzern-interlaken-express
 
