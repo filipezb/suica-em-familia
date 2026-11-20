@@ -30,14 +30,6 @@ Tudo aqui fica visível na internet. **Nunca commitar:** idades, telefone, e-mai
 - Pode commitar e publicar mudanças simples sem pedir, com mensagem no padrão do histórico: `Tópico: o que mudou`.
 - Compras: preferir pagar em R$ quando possível (evita IOF); site oficial em CHF só quando é o único canal.
 
-## Pendência: reserva de assento no panorâmico (31 dez) — ABRIU em 20/11/2026, falta reservar
+## Panorâmico 31 dez: assentos reservados
 
-Luzern–Interlaken Express, PE 82 das 10:06 (plataforma 13). Reserva opcional, CHF 12/pessoa no inverno, em https://shop.luzern.com/en/routing/zentralbahn-luzern-interlaken-express
-
-Checar se já abriu (mesma API que o site usa):
-
-```bash
-curl -s -H "Accept: application/json" "https://shop.luzern.com/routing/routerank/v1/reservationOverview?productId=65390005&from=8505000&to=8507492&date=2026-12-31&tenant=luzern"
-```
-
-Resposta `{}` = ainda não abriu. Com lugares (`KLASS_2`, `KLASS_1`, `quantity`) = já dá para reservar. Em 01/11/2026 as reservas iam só até 12/12 (último dia do horário 2026); o horário 2027 começa em 13/12.
+Luzern–Interlaken Express, PE 82 das 10:06 (plataforma 13). Reservado em 20/11/2026: 2ª classe, vagão 3, lugares 112 e 115–118, CHF 60 (5 × 12). Pendência encerrada.
